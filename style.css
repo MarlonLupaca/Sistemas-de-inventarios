@@ -1,0 +1,151 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+*{
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    display: flex;
+    background-color: #ebe9e9;
+}
+
+.barralateral{
+    position: sticky;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 105px;
+    height: 100vh;
+    padding: 0 1.4rem;
+    color: #fff;
+    overflow: hidden;
+    transition: all 0.5s linear;
+    background-color: #cd5360;
+    border-radius: 0px 20px 20px 0px;
+}
+.barralateral2{
+    width: 300px;
+    transition: 0.3;
+}
+
+.logo{
+    height: 50px;
+    padding: 16px;
+}
+.menu{
+    height: 88%;
+    position: relative;
+    list-style: none;
+    padding: 0;
+}
+
+.menu li{
+    padding: 1rem;
+    margin: 5px 0;
+    border-radius: 8px;
+    transition: all 0.5s ease-in-out;
+    
+    
+}
+.menu li:hover {
+    background: #b57d4e;
+    
+}
+
+.menu a{
+    color: #fff;
+    font-size: 14px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.menu a span{
+    overflow: hidden;
+}
+
+.menu a i{
+    font-size: 1.2rem;
+    
+    
+}
+.config{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+/*contenido principal*/
+.contenido--principal{
+    position: relative;
+    background: #ebe9e9;
+    width: 100%;
+    padding: 1rem;
+}
+.header--wrapper img{
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    border-radius: 50%;
+
+}
+.header--wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    background: #fff;
+    border-radius: 10px;
+    padding: 10px 2rem;
+    margin-bottom: 1rem;
+}
+.header--title{
+    color: #cd5360;
+}
+.user--info{
+    display: flex;
+    align-items: center;
+    gap: 1;
+}
+.search--box{
+    background: #ebe9e9;
+    border-radius: 15px;
+    color: #cd5360;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 12px;
+}
+.search--box input{
+    background-color: transparent;
+    padding: 10px;
+}
+.search--box i{
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+}
+.search--box i:hover{
+    transform: scale(1.1);
+}
+
+
+.desplegable{
+    padding: 1rem;
+    text-align: right;
+    font-size: 1.2rem;
+    padding-right: 1.1rem;
+}
+
+.des {
+    transition: transform 0.5s ease-in-out;
+}
+
+.des2 {
+    transform: rotate(180deg);
+}
