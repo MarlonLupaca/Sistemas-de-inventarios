@@ -1,4 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+:root {
+    --color-principal: #845EC2;
+    --color-secundario: #D65db1;
+}
 *{
     margin: 0;
     padding: 0;
@@ -10,50 +14,38 @@
 
 body {
     display: flex;
-    background-color: #ebe9e9;
+    background-color: #ffffff;
+    flex-direction: column;
 }
 
 .barralateral{
-    position: sticky;
     top: 0;
     left: 0;
     bottom: 0;
-    width: 105px;
-    height: 100vh;
-    padding: 0 1.4rem;
+    width: 270px;
+    height: 90vh;
+    padding: 0 0 0 1rem;
     color: #fff;
     overflow: hidden;
     transition: all 0.5s linear;
-    background-color: #cd5360;
+    background-color: var(--color-principal);
     border-radius: 0px 20px 20px 0px;
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+
 }
-.barralateral2{
-    width: 300px;
+.barralateral-mini{
+    width: 105px;
     transition: 0.3;
 }
 
-.logo{
-    height: 50px;
-    padding: 16px;
-}
+
 .menu{
     height: 88%;
     position: relative;
     list-style: none;
     padding: 0;
-}
-
-.menu li{
-    padding: 1rem;
-    margin: 5px 0;
-    border-radius: 8px;
-    transition: all 0.5s ease-in-out;
-    
-    
-}
-.menu li:hover {
-    background: #b57d4e;
-    
 }
 
 .menu a{
@@ -63,89 +55,132 @@ body {
     display: flex;
     align-items: center;
     gap: 1.5rem;
+    padding: 10px 0;
+    padding-left: 15px;
+    border-radius: 50px -0 0 50px;
+    text-align: center;
+    
+
+}
+.menu li{
+    padding: 0.3rem;
+    padding-right: 0;
+    margin:0;
+    border-radius: 8px;
+    transition: all 0.5s ease-in-out;
 }
 
-.menu a span{
+.menu li:hover a{
+    background-color: white;
+    color: var(--color-principal);
+    
+}
+.activo {
+    background-color: #fff;
+    color: var(--color-principal) !important;
+}
+.text{
     overflow: hidden;
+    opacity: 100%;
+    transition: all 0.5s ease;
+    
+}
+.menuDes{
+    opacity: 0;
 }
 
 .menu a i{
     font-size: 1.2rem;
-    
-    
+    padding-left: 0.2rem;
 }
 .config{
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
+    
 }
-/*contenido principal*/
-.contenido--principal{
-    position: relative;
-    background: #ebe9e9;
-    width: 100%;
-    padding: 1rem;
-}
-.header--wrapper img{
-    width: 50px;
-    height: 50px;
-    cursor: pointer;
-    border-radius: 50%;
-
-}
-.header--wrapper{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    background: #fff;
-    border-radius: 10px;
-    padding: 10px 2rem;
-    margin-bottom: 1rem;
-}
-.header--title{
-    color: #cd5360;
-}
-.user--info{
-    display: flex;
-    align-items: center;
-    gap: 1;
-}
-.search--box{
-    background: #ebe9e9;
-    border-radius: 15px;
-    color: #cd5360;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    padding: 4px 12px;
-}
-.search--box input{
-    background-color: transparent;
-    padding: 10px;
-}
-.search--box i{
-    font-size: 1.2rem;
-    cursor: pointer;
-    transition: all 0.5s ease-in-out;
-}
-.search--box i:hover{
-    transform: scale(1.1);
-}
-
-
 .desplegable{
     padding: 1rem;
     text-align: right;
     font-size: 1.2rem;
-    padding-right: 1.1rem;
+    padding-right: 36px; 
 }
 
 .des {
     transition: transform 0.5s ease-in-out;
+    
 }
 
 .des2 {
     transform: rotate(180deg);
+}
+
+/*contenido principal*/
+.contenido--principal{
+    background: #ffff;
+    width: 100%;
+    border: 1px solid rgb(0, 0, 0);
+}
+
+.contenedor--cabecera{
+    display: flex;
+    height: 10vh;
+    position: sticky;
+    background-color: var(--color-principal);
+    align-items: center;
+
+    color: #fff;
+}
+.contenedor--cabecera i{
+    margin-left: 1.8rem;
+    margin-right: 1rem;
+    font-size: 3rem;
+    display: inline-block;
+    
+}
+.contenedor--cabecera span{
+    font-size: 2rem;
+    display: inline-block;
+}
+.contenedor--cabecera--contenido{
+    width: 100%;
+    display: flex;
+    justify-content: start;
+}
+.contenedor--cabecera--contenido div{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.contenedor--cabecera--contenido div img{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    margin: 0 15px;
+}
+.main{
+    display: flex;
+    height: 90vh;
+    background-color: #ffffff;
+    overflow: auto;
+    
+}
+
+.contenedor--objetos{
+    border: 1px solid red;
+    padding: 1.5rem 1rem;
+
+}
+.contenedor--objetos ul{
+    display: flex;
+    flex-wrap: wrap;
+}
+.contenedor--objetos ul li{
+    height: 50px;
+    width: 50px;
+    border: 1px solid black;
+    margin: 2rem;
+    list-style: none;
 }

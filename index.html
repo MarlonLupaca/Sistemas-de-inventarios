@@ -1,98 +1,116 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Inventario</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+    <link rel="stylesheet" href="styleLogin.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!--menu lateral-->
-    <nav class="barralateral">
-        <div class="desplegable">
-            <i class="fa-solid fa-backward des" id="desplegar"></i>
-        </div>
-        <ul class="menu">
-            <li id="Dashboard">
-                <a href="#">
-                    <i class="fa-solid fa-house"></i>
-                    <span>Dashboard</span>
-                </a>
-            </li>
-            <li id="Compras">
-                <a href="#">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                    <span>Compras</span>
-                </a>
-            </li>
-            <li id="Recibidos">
-                <a href="#">
-                    <i class="fa-solid fa-truck-front"></i>
-                    <span>Recibidos</span>
-                </a>
-            </li>
-            <li id="Devoluciones">
-                <a href="#">
-                    <i class="fa-solid fa-file-import"></i>
-                    <span>Devoluciones</span>
-                </a>
-            </li>
-            <li id="Stocks">
-                <a href="#">
-                    <i class="fa-solid fa-industry"></i>
-                    <span>Stocks</span>
-                </a>
-            </li>
-            <li id="Ventas">
-                <a href="#">
-                    <i class="fa-solid fa-truck-fast"></i>
-                    <span>Ventas</span>
-                </a>
-            </li>
-            <li id="Proveedores">
-                <a href="#">
-                    <i class="fa-solid fa-user-secret"></i>
-                    <span>Proveedores</span>
-                </a>
-            </li>
-            <li id="Productos">
-                <a href="#">
-                    <i class="fa-solid fa-hand-holding-heart"></i>
-                    <span>Productos</span>
-                </a>
-            </li>
-            <li id="Usuarios">
-                <a href="#">
-                    <i class="fa-solid fa-user-group"></i>
-                    <span>Usuarios</span>
-                </a>
-            </li>
-            <li class="config" id="Configuraciones">
-                <a href="#">
-                    <i class="fa-solid fa-user-gear"></i>
-                    <span>Configuraciones</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
-    <!--Fin del menu-->
-    <!--contenido principal-->
-    <div class="contenido--principal">
-        <div class="header--wrapper">
-            <div class="header--title">
-                <span>Primer Modulo</span>
-                <h2>Dashboard</h2>
-            </div>
-            <div class="user--info">
-                <div class="search--box">
-                    <i class="fa-solid fa-search"></i>
-                    <input type="text" placeholder="Buscar">
+    <div class="contenedor">
+        <div class="contenedor--formulario">
+            <div class="logearse contenedor--iniciar--sesion">
+                <div class="centrador">
+                    <div >
+                        <h2>Iniciar Sesión</h2>
+                    <ul>
+                        <li>
+                            <i class="fa-brands fa-facebook"></i>
+                        </li>
+                        <li>
+                            <i class="fa-brands fa-instagram"></i>
+                        </li>
+                        <li>
+                            <i class="fa-brands fa-twitter"></i>
+                        </li>
+                        <li>
+                            <i class="fa-brands fa-youtube"></i>
+                        </li>
+                        <li>
+                            <i class="fa-brands fa-tiktok"></i>
+                        </li>
+                        <li>
+                            <i class="fa-brands fa-google"></i>
+                        </li>
+                    </ul>
+                    
+                    <form>
+                        <p >Use su correo y contraseña</p>
+                        <div>
+                            <i class="fa-solid fa-user dao"></i>
+                            <input type="email" placeholder="Email" >
+                        </div>
+                        <div>
+                            <i class="fa-solid fa-lock dao"></i>
+                            <input type="password" placeholder="Contraseña">
+                        </div>
+                        
+                        
+                        <input type="button" value="Iniciar Sesión" class="button">
+                    </form>
+                    </div>
                 </div>
-                <img src="guardar.jpg" alt="">
+            </div>
+            <div class="logearse contenedor--registrarse">
+                <div class="centrador">
+                    <div >
+                        <h2>Registrarse</h2>
+                    <ul>
+                        <li>
+                            <i class="fa-brands fa-facebook"></i>
+                        </li>
+                        <li>
+                            <i class="fa-brands fa-instagram"></i>
+                        </li>
+                        <li>
+                            <i class="fa-brands fa-twitter"></i>
+                        </li>
+                        <li>
+                            <i class="fa-brands fa-youtube"></i>
+                        </li>
+                        <li>
+                            <i class="fa-brands fa-tiktok"></i>
+                        </li>
+                        <li>
+                            <i class="fa-brands fa-google"></i>
+                        </li>
+                    </ul>
+                    
+                    <form>
+                        <p >Use su correo y contraseña</p>
+                        <div>
+                            <i class="fa-solid fa-user dao"></i>
+                            <input type="email" placeholder="Email" >
+                        </div>
+                        <div>
+                            <i class="fa-solid fa-lock dao"></i>
+                            <input type="password" placeholder="Contraseña">
+                        </div>
+                        
+                        
+                        <input type="button" value="Registrar" class="button button--segundo">
+                    </form>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="contenido--mover contenedor--registro">
+                <div>
+                    <h2>¡Bienvenido!</h2>
+                    <p>Ingrese tus datos personales para usar todas las funcionalidades del sistema de inventario</p>
+                    <button class="button_mover" id="boton_bienvenida">Registrarse</button>
+                </div>
+            </div>
+            <div class="contenido--mover contenedor--sesion">
+                <div>
+                    <h2>¡Regístrate!</h2>
+                    <p>Registra tus datos personales para usar todas las funcionalidades del sistema de inventario</p>
+                    <button class="button_mover" id="boton_sesion">Iniciar Sesión</button>
+                </div>
             </div>
         </div>
     </div>
-    <script src="script.js"></script>
+    <script src="scripLogin.js"></script>
 </body>
 </html>
