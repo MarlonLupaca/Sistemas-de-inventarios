@@ -1,0 +1,333 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+:root {
+    --color-principal: #1f2d3d;
+    --color-secundario: #D65db1;
+}
+*{
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+body{
+    height: 92vh;
+}
+
+.barralateral{
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 15rem;
+    
+    height: 100vh;
+    padding: 0 0 0 0.5rem;
+    color: #fff;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+    background-color: var(--color-principal);
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0,0.25);
+    z-index: 20;
+}
+.barralateral-mini{
+    width: 4.6rem;
+    transition: 0.3;
+    
+}
+.barralateral:hover{
+    width: 15rem;
+    transition: 0.3;
+}
+.barralateral:hover .text{
+    opacity: 100%;
+}
+
+.menu{
+    height: 100%;
+    position: relative;
+    list-style: none;
+    padding: 0;
+}
+.menu div{
+    display: flex;
+    white-space: nowrap;
+    overflow: hidden;
+    height: 3.5rem;
+    width: 100%;
+    border-bottom: 1px solid #cacaca;
+    align-items: center;
+    
+}
+.menu div i{
+    border-bottom: 1px solid #ededed;
+    margin-left: 0.6rem;
+    border-radius: 50%;
+    padding: 0.3rem;
+    font-size: 1.5rem;
+    background-color: #fff;
+    color: var(--color-principal);
+}
+.menu div:first-child span{
+    transition: all 0.5s ease-in-out;
+    margin-left: 1rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+.menu div:nth-child(2) span{
+    transition: all 0.5s ease-in-out;
+
+    margin-left: 1rem;
+    font-size: 0.8rem;
+    
+}
+.menu div:nth-child(2){
+    margin-bottom: 2rem;
+}
+.menu div img{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    margin-left: 0.6rem;
+}
+
+.text{
+    overflow: hidden;
+    opacity: 100%;
+    transition: all 0.5s ease;
+    
+}
+.menu a{
+    color: #fff;
+    font-size: 0.9rem;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 10px 0;
+    padding-left: 15px;
+    border-radius: 50px -0 0 50px;
+    text-align: center;
+
+}
+.menu li{
+    padding-right: 0;
+    margin: 0.5rem 0;
+    border-radius: 8px;
+    transition: all 0.5s ease-in-out;
+    
+
+}
+
+.menu li:hover a{
+    background-color: white;
+    color: var(--color-principal);
+    
+}
+.activo {
+    background-color: #fff;
+    color: var(--color-principal) !important;
+}
+
+.menuDes{
+
+    opacity: 0;
+}
+
+.menu a i{
+    font-size: 1.3rem;
+    width: 2rem;
+    
+    margin-left: 0.1rem;
+}
+
+.desplegable{
+    padding: 1rem;
+    text-align: right;
+    font-size: 1.2rem;
+    padding-right: 32px; 
+}
+
+.des {
+    transition: transform 0.5s ease-in-out;
+    
+}
+
+.des2 {
+    transform: rotate(180deg);
+}
+.config{
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+
+}
+
+/*contenido principal*/
+.contenido--principal{
+    background: #ffffff;
+    height: 100%;
+    margin-left: 15rem;
+    transition: all 0.3s ease-in-out;
+}
+.contenido--flexible{
+    
+    margin-left: 4.6rem;
+}
+
+.contenedor--cabecera{
+    display: flex;
+    height: 3.5rem;
+    position: sticky;
+    background-color: var(--color-principal);
+    align-items: center;
+    margin-left: 4.6rem;
+    color: #7e7e7e;
+    
+    padding-left: 11.5rem;
+    background-color: #fff;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 5px 15px rgba(0, 0, 0,0.15);
+
+}
+.contenedor--cabecera--movimiento{
+    padding: 1rem;
+}
+
+.contenedor--cabecera i{
+    font-size: 1.4rem;
+    display: inline-block;
+    cursor: pointer;
+    padding:0.5rem 0;
+    
+    
+}
+.contenedor--cabecera span{
+    font-size: 2rem;
+    display: inline-block;
+}
+.contenedor--cabecera--contenido{
+    width: 100%;
+    display: flex;
+    justify-content: start;
+}
+#sis{
+    font-size: 1.4rem;
+    padding: 0.2rem;
+    color: #7e7e7e;
+    margin-left: 1rem;
+}
+.contenedor--cabecera--contenido div{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contenedor--objetos{
+    padding: 1.5rem 1rem;
+    padding-top: 0;
+    height: 100%;
+    overflow: auto;
+
+}
+.contenedor--objetos ul{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.contenedor--objetos li{
+    height: 75px;
+    width: 290px;
+    margin: 1rem 0.5rem;  
+    list-style: none;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0,0.15);
+    display: grid;
+    grid-template-columns: 30% 70%;
+    grid-template-rows: 50% 50%;
+    border-radius: 10px;
+    transition: all 0.5s ease-in-out;
+    cursor: pointer;
+}
+.contenedor--objetos li:hover{
+    transform: scale(1.05);
+}
+.contenedor--objetos li i{
+    grid-row: 1/3;
+    height: 100%;
+    width: 100%;
+    font-size: 2.7rem;
+    padding: 20%;
+    padding-left: 25%;
+    color: #fff;
+    transition: all 0.5s ease-in-out !important;
+    
+}
+.contenedor--objetos li:hover i{
+    transform: rotate(45deg);
+    border-radius: 20px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0,0.5);
+    
+}
+.primer--texto{
+    align-self: end;
+    font-size: 0.8rem;
+}
+.segundo--texto{
+    font-size: 1.1rem;
+    align-self: start;
+
+}
+.contenedor--objetos li span{
+    padding: 0 1rem;
+    color: #fff;
+}
+h3{
+    color: #000;
+    padding: 0.9rem 0.5rem;
+    height: 3.6rem;
+}
+/*card*/
+.contenedor--objetos ul li:nth-child(1) i{
+    background-color: #00757A;
+}
+.contenedor--objetos ul li:nth-child(1){
+    background-color: #008789;
+}
+
+.contenedor--objetos ul li:nth-child(2) i{
+    background-color: #0c4bff;
+}
+.contenedor--objetos ul li:nth-child(2){
+    background-color: #2f78ff;
+}
+
+.contenedor--objetos ul li:nth-child(4) i{
+    background-color: #0083d4;
+}
+.contenedor--objetos ul li:nth-child(4){
+    background-color: #00a7fa;
+}
+
+.contenedor--objetos ul li:nth-child(3) i{
+    background-color: #00c02b;
+}
+.contenedor--objetos ul li:nth-child(3){
+    background-color: #00fa3e;
+}
+
+.contenedor--objetos ul li:nth-child(5) i{
+    background-color: #fa7000;
+}
+.contenedor--objetos ul li:nth-child(5){
+    background-color: #ff8b0a;
+}
+.contenedor--objetos ul li:nth-child(6) i{
+    background-color: #ff2323;
+}
+.contenedor--objetos ul li:nth-child(6){
+    background-color: #ff5757;
+}

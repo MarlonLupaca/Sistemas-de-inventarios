@@ -4,34 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Inventario</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <!--cabecera-->
     <header class="contenedor--cabecera">
         <div class="contenedor--cabecera--contenido">
-            <i class="fa-solid fa-people-carry-box"></i>
-            <span>Sistema de inventarios</span>
+            <i class="fa-solid fa-bars" id="desplegar"></i>
+            <span id="sis">Sistema de ventas</span>
         </div>
-        
     </header>
 
     <!--menu lateral-->
-    <div class="main">
         <nav class="barralateral">
-            <div class="desplegable">
-                <i class="fa-solid fa-backward des" id="desplegar"></i>
-            </div>
             <ul class="menu">
+                <div>
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <span class="text">Inventarios</span>
+                </div>
+                <div>
+                    <img src="/imagenes/vendedor.jpg" alt="">
+                    <span class="text">Leonardo Rodriguez</span>
+                </div>
                 <li id="Dashboard">
-                    <a href="dashboard.html">
+                    <a href="dashboard.html" >
                         <i class="fa-solid fa-house"></i>
                         <span class="text">Dashboard</span>
                     </a>
                 </li>
                 <li id="Productos">
-                    <a href="productos.html" class="activo">
+                    <a href="productos.html">
                         <i class="fa-solid fa-laptop-code"></i>
                         <span class="text">Productos</span>
                     </a>
@@ -66,7 +69,7 @@
                         <span class="text">Usuarios</span>
                     </a>
                 </li>
-                <li class="config" id="Configuraciones">
+                <li class="config" id="Configuraciones" class="activo">
                     <a href="configuraciones.html">
                         <i class="fa-solid fa-user-gear"></i>
                         <span class="text">Configuraciones</span>
@@ -77,9 +80,12 @@
         <!--Fin del menu-->
         <!--contenido principal-->
         <div class="contenido--principal">
+            <div class="contenedor--objetos">
+                <h3>Configuraciones</h3>
+                
+            </div>
         </div>
-    </div>
     
-    <script src="script.js"></script>
+    <script src="/javascript/script.js"></script>
 </body>
 </html>
