@@ -1,0 +1,92 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");  
+:root {
+    --color-principal: #1f2d3d;
+    --color-secundario: #D65db1;
+    --color-gris: #b0b0b0;
+
+}
+*{
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+.tabla--productos--contenedor{
+    padding: 1rem 2.5rem;
+    display: flex;
+    overflow: auto;
+}
+.productos--tabla{
+    border-collapse: collapse;
+    margin: auto;
+    margin-top: 2rem;
+    width: 100%;
+}
+td, th{
+    font-size: 12px;
+    text-align: start;
+}
+th {
+    padding: 7px;
+}
+.btn--ajustable{
+    font-size: 12px;
+}
+
+.modal--producto{
+    width: 900px;
+    height: 490px;
+    margin-top: 50px;
+}
+
+.modal--producto form{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 1.5rem;
+}
+/* Stocks*/
+
+.alerta{
+    padding: 15px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 30px 15px;
+}
+
+.alerta > div{
+    
+    width: 250px;
+    height: 220px;
+    margin: auto;
+    border-radius: 20px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.35);
+    transition: all 0.3s ease-in-out;
+}
+.alerta> div:hover{
+    transform: scale(1.05);
+}
+.alerta p{
+    font-size: 15px ;
+    margin: 15px 20px;
+    font-weight: 700;
+}
+
+.alerta span{
+    color: #1f2d3d;
+    font-weight: 500;
+}
+
+.card--cabecera{
+    width: 100;
+    margin: 0;
+    border-radius: 20px 20px 0 0;
+    color: white;
+    background-color: var(--color-principal);
+    padding: 8px 20px;
+}
+.contenedor--card{
+    border: 1px solid rgb(227, 2, 2) !important;
+}

@@ -228,7 +228,7 @@ body{
     margin-left: 4.6rem;
 }
 .contenedor--objetos{
-    padding: 0 0.5rem;
+    padding: 0 2.5rem;
     padding-top: 0;
     height: 100%;
     overflow: auto;
@@ -286,9 +286,8 @@ body{
 }
 h3{
     color: #393939;
-    padding: 0.9rem 1rem;
+    padding: 0.9rem 0.4rem;
     height: 3.6rem;
-
 }
 /*card*/
 .contenedor--objetos ul li:nth-child(1) i{

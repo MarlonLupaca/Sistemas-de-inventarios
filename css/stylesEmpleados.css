@@ -13,9 +13,7 @@
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
 }
-.contenido--empleado{
-    
-}
+
 .cotenedor--objetos{
     
     padding: 0 2rem ;
@@ -60,9 +58,11 @@
 }
 
 .tabla--empleados--contenedor{
+    padding: 1rem 2.5rem;
     display: flex;
 }
 .empleados--tabla{
+    
     border-collapse: collapse;
     margin: auto;
     margin-top: 2rem;
@@ -79,8 +79,10 @@ tr {
 .button--tabla{
     margin: 0;
     margin-right: 0.6rem;
+    display: inline;
+    
 }
-.modal{
+.modal, .modal--editar{
 
     display: flex;
     position: fixed;
@@ -92,6 +94,17 @@ tr {
     bottom: 0;
     left: 0;
     right: 0;
+    opacity: 0;
+    transform: translateY(-100vh);
+    transition: all 0.5s ease-in-out;
+    border-radius: 0 0 50% 50%;
+}
+.modal--view{
+    transform: translate(0);
+    opacity: 1;
+    border-radius: 0;
+    transition: all 0.5s ease-in-out;
+    
 }
 .contenedor--modal{
     margin: 5rem auto;
@@ -150,4 +163,59 @@ tr {
     background-color: #fff;
     color: var(--color-principal);
     border: 2px solid var(--color-principal);
+}
+.tabla--proveedores--contenedor{
+    padding: 1rem 0;
+}
+/*
+.tabla--proveedores--contenedor th:nth-child(5){
+    width: 1rem !important;
+}
+*/
+.proveedores--tabla{
+    margin: 2rem;
+    border-collapse: collapse;
+    margin-top: 2rem;
+}
+.proveedores--tabla th{   
+    text-align: start;
+    font-size: 0.8rem;
+    padding: 0.5rem 0.5rem;
+}
+.proveedores--tabla td{   
+    text-align: start;
+    font-size: 0.8rem;
+}
+.ajustable{
+    width: auto; 
+}
+.tabla--activo{
+    padding: 0.5rem 0;
+    border-radius: 40rem;
+    background-color: rgb(35, 231, 51);
+    color: #fff;
+    display: block;
+    width: 5.5rem;
+    text-align: center;
+    margin-right: 0.5rem;
+}
+.tabla--ausente{
+    padding: 0.5rem 0;
+    border-radius: 40rem;
+    background-color: rgb(231, 130, 35);
+    color: #fff;
+    display: block;
+    width: 5.5rem;
+    text-align: center;
+    margin-right: 0.5rem;
+}
+.tabla--eliminado{
+    padding: 0.5rem 0;
+    border-radius: 40rem;
+    background-color: rgb(231, 35, 35);
+    color: #fff;
+    display: block;
+    width: 5.5rem;
+    text-align: center;
+    margin-right: 0.5rem;
 }
