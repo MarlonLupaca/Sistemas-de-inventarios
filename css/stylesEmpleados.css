@@ -17,14 +17,16 @@
 .cotenedor--objetos{
     
     padding: 0 2rem ;
+    padding-bottom: 35px;
 }
 .contenido--de--empleados{
     display: flex;
     flex-direction: column;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
     margin: 0 1rem;
-    
-    padding-bottom: 2rem;
+}
+.espaciado{
+    padding-bottom: 1.5rem;
 }
 .contenido--de--empleados div:first-child{
     border-bottom: 2px solid var(--color-gris);
@@ -34,7 +36,6 @@
     padding: 2rem 0;
 }
 .button{
-    
     height: 2rem;
     margin-left: 2.5rem;
     background-color: var(--color-principal);
@@ -42,7 +43,13 @@
     padding: 0.2rem 1.2rem;
     border-radius: 5px;
     cursor: pointer;
+    transition: all 0.3s ease-in-out;
 }
+.button:hover{
+    transform: scale(1.025);
+}
+
+
 .inputs{
     display: flex;
     padding-top: 1.5rem;
@@ -55,6 +62,10 @@
     padding: 0.3rem 1rem;
     width: 20rem;
     border-radius: 5px;
+    transition: all 0.2s ease-in-out;
+}
+.contenido--de--empleados input:focus{
+    border: 2px solid var(--color-principal);
 }
 
 .tabla--empleados--contenedor{

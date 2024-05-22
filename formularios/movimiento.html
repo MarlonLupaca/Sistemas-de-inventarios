@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Inventario</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/stylesEmpleados.css">
+    
+    <link rel="stylesheet" href="../css/styleProducto.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -24,7 +27,7 @@
                     <span class="text">Inventarios</span>
                 </div>
                 <div>
-                    <img src="/imagenes/vendedor.jpg" alt="">
+                    <img src="../imagenes/vendedor.jpg" alt="">
                     <span class="text">Leonardo Rodriguez</span>
                 </div>
                 <li id="Dashboard">
@@ -79,13 +82,284 @@
         </nav>
         <!--Fin del menu-->
         <!--contenido principal-->
-        <div class="contenido--principal">
-            <div class="contenedor--objetos">
+        <div class="contenido--principal contenido--empleado">
+            <div class="contenedor--objetos cotenedor--objetos">
                 <h3>Movimientos</h3>
-                
+                <div class="contenido--de--empleados">
+                    <div>
+                        <button class="button" id="btn--new--empleado">Nueva salida +</button>
+                        <button class="button" id="btn--new--entrada">Nueva entrada +</button>
+                    </div>
+                    <div class="inputs">
+                        <input type="text" placeholder="Busqueda por nombre">
+                        <input type="text" placeholder="Busqueda por productos">
+                        <input type="text" placeholder="Busqueda por estado">
+                    </div>
+                    <div class="tabla--proveedores--contenedor">
+                        <table class="proveedores--tabla">
+                            <thead>
+                                <tr>
+                                    <th>T.Movi.</th>
+                                    <th>Comprobante</th> 
+                                    <th>Fe. y Ho.</th>
+                                    <th>Producto</th>
+                                    <th>Cantidad</th>
+                                    <th>Total</th>
+                                    <th>Proveedor</th>
+                                    <th>Editar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Entrada</td>
+                                    <td>A1023</td>
+                                    <td nowrap>07/07/2002 3:07 pm</td>
+                                    <td>Celular Samsung</td>
+                                    <td>30</td>
+                                    <td>S/.30</td>
+                                    <td>Inversiones</td>
+                                    <td nowrap>
+                                        <button class="button button--tabla  ">View</button>
+                                        <button class="button button--tabla btn--editar">Editar</button>
+                                        <button class="button button--tabla">Eliminar</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Entrada</td>
+                                    <td>A1023</td>
+                                    <td nowrap>07/07/2002 3:07 pm</td>
+                                    <td>Celular Samsung</td>
+                                    <td>30</td>
+                                    <td>S/.30</td>
+                                    <td>Inversiones</td>
+                                    <td nowrap>
+                                        <button class="button button--tabla  ">View</button>
+                                        <button class="button button--tabla btn--editar">Editar</button>
+                                        <button class="button button--tabla">Eliminar</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Entrada</td>
+                                    <td>A1023</td>
+                                    <td nowrap>07/07/2002 3:07 pm</td>
+                                    <td>Celular Samsung</td>
+                                    <td>30</td>
+                                    <td>S/.30</td>
+                                    <td>Inversiones</td>
+                                    <td nowrap>
+                                        <button class="button button--tabla  ">View</button>
+                                        <button class="button button--tabla btn--editar">Editar</button>
+                                        <button class="button button--tabla">Eliminar</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Entrada</td>
+                                    <td>A1023</td>
+                                    <td nowrap>07/07/2002 3:07 pm</td>
+                                    <td>Celular Samsung</td>
+                                    <td>30</td>
+                                    <td>S/.30</td>
+                                    <td>Inversiones</td>
+                                    <td nowrap>
+                                        <button class="button button--tabla  ">View</button>
+                                        <button class="button button--tabla btn--editar">Editar</button>
+                                        <button class="button button--tabla">Eliminar</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Entrada</td>
+                                    <td>A1023</td>
+                                    <td nowrap>07/07/2002 3:07 pm</td>
+                                    <td>Celular Samsung</td>
+                                    <td>30</td>
+                                    <td>S/.30</td>
+                                    <td>Inversiones</td>
+                                    <td nowrap>
+                                        <button class="button button--tabla  ">View</button>
+                                        <button class="button button--tabla btn--editar">Editar</button>
+                                        <button class="button button--tabla">Eliminar</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Entrada</td>
+                                    <td>A1023</td>
+                                    <td nowrap>07/07/2002 3:07 pm</td>
+                                    <td>Celular Samsung</td>
+                                    <td>30</td>
+                                    <td>S/.30</td>
+                                    <td>Inversiones</td>
+                                    <td nowrap>
+                                        <button class="button button--tabla  ">View</button>
+                                        <button class="button button--tabla btn--editar">Editar</button>
+                                        <button class="button button--tabla">Eliminar</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Entrada</td>
+                                    <td>A1023</td>
+                                    <td nowrap>07/07/2002 3:07 pm</td>
+                                    <td>Celular Samsung</td>
+                                    <td>30</td>
+                                    <td>S/.30</td>
+                                    <td>Inversiones</td>
+                                    <td nowrap>
+                                        <button class="button button--tabla  ">View</button>
+                                        <button class="button button--tabla btn--editar">Editar</button>
+                                        <button class="button button--tabla">Eliminar</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Entrada</td>
+                                    <td>A1023</td>
+                                    <td nowrap>07/07/2002 3:07 pm</td>
+                                    <td>Celular Samsung</td>
+                                    <td>30</td>
+                                    <td>S/.30</td>
+                                    <td>Inversiones</td>
+                                    <td nowrap>
+                                        <button class="button button--tabla  ">View</button>
+                                        <button class="button button--tabla btn--editar">Editar</button>
+                                        <button class="button button--tabla">Eliminar</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Entrada</td>
+                                    <td>A1023</td>
+                                    <td nowrap>07/07/2002 3:07 pm</td>
+                                    <td>Celular Samsung</td>
+                                    <td>30</td>
+                                    <td>S/.30</td>
+                                    <td>Inversiones</td>
+                                    <td nowrap>
+                                        <button class="button button--tabla  ">View</button>
+                                        <button class="button button--tabla btn--editar">Editar</button>
+                                        <button class="button button--tabla">Eliminar</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
+        <section class="modal">
+            <div class="contenedor--modal modal--producto modal--movimiento">
+                <h2>Nueva salida de producto</h2>
+                <form>
+                    <div>
+                        <i class="fa-solid fa-folder-tree"></i>
+                        <input type="text" placeholder="Tipo de Movimiento">
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-shapes"></i>
+                        <input type="email" placeholder="Comprobante">
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-clipboard-user"></i>
+                        <input type="text" placeholder="Fecha y Hora">
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-sheet-plastic"></i>
+                        <input type="text" placeholder="Producto">
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-box-open"></i>
+                        <input type="text" placeholder="Cantidad">
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-shapes"></i>
+                        <input type="text" placeholder="Total">
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-sack-dollar"></i>
+                        <input type="text" placeholder="Proveedores">
+                    </div>
+                    <div class="contenedor--botones">
+                        <button type="button" class="button button--form">Guardar</button>
+                        <button type="button"  class="button button--form button--form--cancelar" id="btn--esconder--new--empleado">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+        <section class="modal modal--salida">
+            <div class="contenedor--modal modal--producto modal--movimiento">
+                <h2>Nueva entrada de producto</h2>
+                <form>
+                    <div>
+                        <i class="fa-solid fa-folder-tree"></i>
+                        <input type="text" placeholder="Tipo de Movimiento">
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-shapes"></i>
+                        <input type="email" placeholder="Comprobante">
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-clipboard-user"></i>
+                        <input type="text" placeholder="Fecha y Hora">
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-sheet-plastic"></i>
+                        <input type="text" placeholder="Producto">
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-box-open"></i>
+                        <input type="text" placeholder="Cantidad">
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-shapes"></i>
+                        <input type="text" placeholder="Total">
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-sack-dollar"></i>
+                        <input type="text" placeholder="Proveedores">
+                    </div>
+                    <div class="contenedor--botones">
+                        <button type="button" class="button button--form">Guardar</button>
+                        <button type="button"  class="button button--form button--form--cancelar" id="btn--esconder--entrada">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+        <section class="modal--editar">
+            <div class="contenedor--modal modal--producto modal--movimiento">
+                <h2>Editar movimiento</h2>
+                <form>
+                    <div>
+                        <i class="fa-solid fa-folder-tree"></i>
+                        <input type="text" placeholder="Tipo de Movimiento">
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-shapes"></i>
+                        <input type="email" placeholder="Comprobante">
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-clipboard-user"></i>
+                        <input type="text" placeholder="Fecha y Hora">
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-sheet-plastic"></i>
+                        <input type="text" placeholder="Producto">
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-box-open"></i>
+                        <input type="text" placeholder="Cantidad">
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-shapes"></i>
+                        <input type="text" placeholder="Total">
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-sack-dollar"></i>
+                        <input type="text" placeholder="Proveedores">
+                    </div>
+                    <div class="contenedor--botones">
+                        <button type="button" class="button button--form">Guardar</button>
+                        <button type="button" class="button button--form button--form--cancelar" id="btn--esconder--editar--empleado">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </section>
     
-    <script src="/javascript/script.js"></script>
+    <script src="../javascript/script.js"></script>
 </body>
 </html>

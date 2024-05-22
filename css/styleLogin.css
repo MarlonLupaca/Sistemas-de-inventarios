@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
 :root {
-    --color-principal: #845EC2;
-    --color-secundario: #D65db1;
+    --color-principal: #1f2d3d;
+    --color-secundario: #1f2d3d;
 }
 *{
     margin: 0;
@@ -140,8 +140,9 @@ ul li i:hover{
     margin: auto;
     transition: all 0.5s ease-in-out;
     border: none;
-    padding: 2px 15px;
+    padding: 5px 15px;
     margin-top: 35px;
+    cursor: pointer;
 }
 .button:hover{
     background-color: var(--color-secundario);
@@ -196,6 +197,7 @@ form div {
     border: 2px solid #fff;
     color: #fff;
     transition: all 0.5s ease-in-out;
+    cursor: pointer;
 
 }
 
@@ -254,5 +256,7 @@ form div {
     color: var(--color-secundario);
 }
 
-
+.centrador a{
+    text-decoration: none;
+}
 

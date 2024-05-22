@@ -90,3 +90,10 @@ th {
 .contenedor--card{
     border: 1px solid rgb(227, 2, 2) !important;
 }
+/*Modal movimientos*/
+.modal--movimiento{
+    width: 900px;
+    height: 390px;
+    margin-top: 50px;
+}
+

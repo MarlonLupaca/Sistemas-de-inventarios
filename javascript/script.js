@@ -43,3 +43,17 @@ btnsEditarEmpleado.forEach(btn => {
 btnsEditarEmpleadoOcultar.addEventListener("click", ()=>{
     modalEditar.classList.toggle("modal--view");
 })
+
+
+//movimientos
+const btnNewEntrada = document.getElementById("btn--new--entrada");
+const btnOcultarEntrada = document.getElementById("btn--esconder--entrada");
+
+const modalEntrada = document.querySelector(".modal--salida");
+
+btnNewEntrada.addEventListener("click", () => {
+    modalEntrada.classList.toggle("modal--view");
+});
+btnOcultarEntrada.addEventListener("click", () => {
+    modalEntrada.classList.toggle("modal--view");
+});
