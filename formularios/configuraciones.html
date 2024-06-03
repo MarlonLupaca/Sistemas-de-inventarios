@@ -69,8 +69,8 @@
                         <span class="text">Usuarios</span>
                     </a>
                 </li>
-                <li class="config" id="Configuraciones" class="activo">
-                    <a href="configuraciones.html">
+                <li class="config" id="Configuraciones">
+                    <a href="configuraciones.html" class="activo">
                         <i class="fa-solid fa-user-gear"></i>
                         <span class="text">Configuraciones</span>
                     </a>
@@ -82,7 +82,36 @@
         <div class="contenido--principal">
             <div class="contenedor--objetos">
                 <h3>Configuraciones</h3>
-                
+                <div class="contenido--configuraciones">
+                    <h2>Datos Personales</h2>
+                    <div class="form">
+                        <div>
+                            <label for="nombre">Nombre </label>
+                            <input id="nombre" type="text">
+                        </div>
+                        <div>
+                            <label for="apellido">Apellido </label>
+                            <input id="apellido" type="text">
+                        </div>
+                        <div>
+                            <label for="usuario">Usuario </label>
+                            <input id="usuario" type="text">
+                        </div>
+                        <div>
+                            <label for="contraseña">Contraseña </label>
+                            <input id="contraseña" type="password">
+                        </div>
+                        <div class="imagens">
+                            <label for="foto">Foto </label>
+                            <input id="foto" type="file" accept="image/*">
+                        </div>
+                        <div class="imagens centrado--img">
+                            <img src="../imagenes/vendedor.jpg" alt="">
+                        </div>
+                        <button class="button--register">Actualizar</button>
+                    </div>
+                    
+                </div>
             </div>
         </div>
     
