@@ -6,6 +6,7 @@
     <title>Dashboard Inventario</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/stylesEmpleados.css">
+    <link rel="stylesheet" href="../css/styleProveedores.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -85,7 +86,7 @@
                 <h3>Proveedores</h3>
                 <div class="contenido--de--empleados">
                     <div>
-                        <button class="button" id="btn--new--empleado">Proveedor nuevo +</button>
+                        <button class="button" id="btn--new--proveedor">Proveedor nuevo +</button>
                     </div>
                     <div class="inputs">
                         <input type="text" placeholder="Busqueda por nombre">
@@ -93,7 +94,7 @@
                         <input type="text" placeholder="Busqueda por estado">
                     </div>
                     <div class="tabla--proveedores--contenedor">
-                        <table class="proveedores--tabla">
+                        <table class="proveedores--tabla" id="data">
                             <thead>
                                 <tr>
                                     <th>Nombre</th>
@@ -234,64 +235,89 @@
             </div>
         </div>
         <section class="modal">
-            <div class="contenedor--modal">
+            <div class="contenedor--modal modal--proveedores">
                 <h2>Agregar nuevo proveedor</h2>
                 <form>
                     <div>
                         <i class="fa-solid fa-user"></i>
-                        <input type="text" placeholder="Nombre">
+                        <input type="text" placeholder="Nombre" id="inputNombre">
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" placeholder="Direccion" id="inputDireccion">
                     </div>
                     <div>
                         <i class="fa-solid fa-envelope"></i>
-                        <input type="email" placeholder="Correo electrónico">
+                        <input type="email" placeholder="Correo electrónico" id="inputCorreo">
                     </div>
                     <div>
-                        <i class="fa-solid fa-phone"></i>
-                        <input type="number" placeholder="Teléfono">
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" placeholder="Contacto principal" id="inputContacto">
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" placeholder="Tipo de productos" id="inputTipoProductos">
                     </div>
                     <div>
                         <i class="fa-solid fa-briefcase"></i>
-                        <input type="text" placeholder="Rango">
+                        <input type="text" placeholder="Forma de pago" id="inputFpago">
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-briefcase"></i>
+                        <input type="text" placeholder="Estado del proveedor" id="inputEstado">
                     </div>
                     
                     
                     <div class="contenedor--botones">
-                        <button type="button" class="button button--form">Guardar</button>
-                        <button type="button"  class="button button--form button--form--cancelar" id="btn--esconder--new--empleado">Cancelar</button>
+                        <button type="button" class="button button--form" id="guardarDdato">Guardar</button>
+                        <button type="button"  class="button button--form button--form--cancelar" id="btn--esconder--new--proveedor">Cancelar</button>
                     </div>
                 </form>
             </div>
         </section>
         <section class="modal--editar">
-            <div class="contenedor--modal">
+            <div class="contenedor--modal modal--proveedores">
                 <h2>Editar proveedor</h2>
                 <form>
                     <div>
                         <i class="fa-solid fa-user"></i>
-                        <input type="text" placeholder="Nombre">
+                        <input type="text" placeholder="Nombre" id="editNombre">
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" placeholder="Direccion" id="editDireccion">
                     </div>
                     <div>
                         <i class="fa-solid fa-envelope"></i>
-                        <input type="email" placeholder="Correo electrónico">
+                        <input type="email" placeholder="Correo electrónico" id="editCorreo">
                     </div>
                     <div>
-                        <i class="fa-solid fa-phone"></i>
-                        <input type="number" placeholder="Teléfono">
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" placeholder="Contacto principal" id="editContacto">
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" placeholder="Tipo de productos" id="editTipoProductos">
                     </div>
                     <div>
                         <i class="fa-solid fa-briefcase"></i>
-                        <input type="text" placeholder="Cargo">
+                        <input type="text" placeholder="Forma de pago" id="editFpago">
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-briefcase"></i>
+                        <input type="text" placeholder="Estado del proveedor" id="editEstado">
                     </div>
                     
                     
                     <div class="contenedor--botones">
                         <button type="button" class="button button--form">Guardar</button>
-                        <button type="button" class="button button--form button--form--cancelar" id="btn--esconder--editar--empleado">Cancelar</button>
+                        <button type="button" class="button button--form button--form--cancelar" id="btn--esconder--editar--proveedor">Cancelar</button>
                     </div>
                 </form>
             </div>
         </section>
     
     <script src="../javascript/script.js"></script>
+    <script src="../javascript/scriptProveedores.js"></script>
 </body>
 </html>

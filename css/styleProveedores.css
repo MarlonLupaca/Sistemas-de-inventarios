@@ -1,0 +1,12 @@
+.modal--proveedores{
+    width:57rem;
+    height: 24rem;
+}
+
+.modal--proveedores form{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.proveedores--tabla{
+    width: 71rem;
+}
