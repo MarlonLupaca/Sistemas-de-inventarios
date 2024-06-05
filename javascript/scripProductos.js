@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
     //variables
     let indice = -1;
 
-btnActualizar.addEventListener("click", actulizar)
+    btnActualizar.addEventListener("click", actulizar)
 
     btnModalNewProdcuto.addEventListener("click", () => {
         modal.classList.toggle("modal--view");
