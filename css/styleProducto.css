@@ -54,6 +54,7 @@ th {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 30px 15px;
+    margin-top: 35px;
 }
 
 .alerta > div{

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Inventario</title>
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/stylesEmpleados.css">
+    <link rel="stylesheet" href="../css/stylesUsuarios.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -85,12 +85,12 @@
                 <h3>Usuarios</h3>
                 <div class="contenido--de--empleados espaciado">
                     <div>
-                        <button class="button" id="btn--new--empleado">Usuario nuevo +</button>
+                        <button class="button" id="btn--nuevo--usuario">Usuario nuevo +</button>
                     </div>
                     <div class="inputs">
                         <input type="text" placeholder="Busqueda por nombre">
-                        <input type="text" placeholder="Busqueda por apellido">
-                        <input type="text" placeholder="Busqueda por correo">
+                        <input type="text" placeholder="Busqueda por rango"> 
+                        <input type="text" placeholder="Busqueda por correo"> 
                     </div>
                     <div class="tabla--empleados--contenedor">
                         <table class="empleados--tabla">
@@ -109,96 +109,6 @@
                                     <td>juan@example.com</td>
                                     <td>555-1234</td>
                                     <td>Administrador</td>
-                                    <td><button class="button button--tabla btn--editar">Editar</button>
-                                        <button class="button button--tabla">Eliminar</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Juan Pérez</td>
-                                    <td>juan@example.com</td>
-                                    <td>555-1234</td>
-                                    <td>Empleado</td>
-                                    <td><button class="button button--tabla btn--editar">Editar</button>
-                                        <button class="button button--tabla">Eliminar</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Juan Pérez</td>
-                                    <td>juan@example.com</td>
-                                    <td>555-1234</td>
-                                    <td>Empleado</td>
-                                    <td><button class="button button--tabla btn--editar">Editar</button>
-                                        <button class="button button--tabla">Eliminar</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Juan Pérez</td>
-                                    <td>juan@example.com</td>
-                                    <td>555-1234</td>
-                                    <td>Empleado</td>
-                                    <td><button class="button button--tabla btn--editar">Editar</button>
-                                        <button class="button button--tabla">Eliminar</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Juan Pérez</td>
-                                    <td>juan@example.com</td>
-                                    <td>555-1234</td>
-                                    <td>Empleado</td>
-                                    <td><button class="button button--tabla btn--editar">Editar</button>
-                                        <button class="button button--tabla">Eliminar</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Juan Pérez</td>
-                                    <td>juan@example.com</td>
-                                    <td>555-1234</td>
-                                    <td>Empleado</td>
-                                    <td><button class="button button--tabla btn--editar">Editar</button>
-                                        <button class="button button--tabla">Eliminar</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Juan Pérez</td>
-                                    <td>juan@example.com</td>
-                                    <td>555-1234</td>
-                                    <td>Empleado</td>
-                                    <td><button class="button button--tabla btn--editar">Editar</button>
-                                        <button class="button button--tabla">Eliminar</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Juan Pérez</td>
-                                    <td>juan@example.com</td>
-                                    <td>555-1234</td>
-                                    <td>Empleado</td>
-                                    <td><button class="button button--tabla btn--editar">Editar</button>
-                                        <button class="button button--tabla">Eliminar</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Juan Pérez</td>
-                                    <td>juan@example.com</td>
-                                    <td>555-1234</td>
-                                    <td>Empleado</td>
-                                    <td><button class="button button--tabla btn--editar">Editar</button>
-                                        <button class="button button--tabla">Eliminar</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Juan Pérez</td>
-                                    <td>juan@example.com</td>
-                                    <td>555-1234</td>
-                                    <td>Empleado</td>
-                                    <td><button class="button button--tabla btn--editar">Editar</button>
-                                        <button class="button button--tabla">Eliminar</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Juan Pérez</td>
-                                    <td>juan@example.com</td>
-                                    <td>555-1234</td>
-                                    <td>Empleado</td>
                                     <td><button class="button button--tabla btn--editar">Editar</button>
                                         <button class="button button--tabla">Eliminar</button>
                                     </td>
@@ -237,7 +147,10 @@
                     </div>
                     <div>
                         <i class="fa-solid fa-briefcase"></i>
-                        <input type="text" placeholder="Rango">
+                        <select>
+                            <option value="Administrador">Administrador</option>
+                            <option value="Empleado">Empleado</option>
+                        </select>
                     </div>
                     
                     
@@ -266,10 +179,11 @@
                     </div>
                     <div>
                         <i class="fa-solid fa-briefcase"></i>
-                        <input type="text" placeholder="Cargo">
+                        <select name="rango" id="rango">
+                            <option value="Administrador">Administrador</option>
+                            <option value="Empleado">Empleado</option>
+                        </select>
                     </div>
-                    
-                    
                     <div class="contenedor--botones">
                         <button type="button" class="button button--form">Guardar</button>
                         <button type="button" class="button button--form button--form--cancelar" id="btn--esconder--editar--empleado">Cancelar</button>
@@ -278,5 +192,6 @@
             </div>
         </section>
     <script src="../javascript/script.js"></script>
+    <script src="../javascript/scriptUsuarios.js"></script>
 </body>
 </html>

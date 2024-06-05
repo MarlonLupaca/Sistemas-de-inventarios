@@ -1,0 +1,28 @@
+/*Este css es para el diseño de las barras de búsqueda, es una adaptación de las barras de búsqueda "input" de stylesEmpleados.css*/
+.inputs{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 1.5rem;
+    padding-top: 0;
+    padding-bottom: 2rem;
+    border-top: 15px solid var(--color-principal);
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+.inputs input{
+    border: 2px solid var(--color-gris);
+    margin: auto;
+    padding: 0.3rem 1rem;
+    width: 20rem;
+    border-radius: 8px;
+    transition: all 0.2s ease-in-out;
+}
+.inputs input:focus{
+    border: 2px solid var(--color-principal);
+}
+.inputs h4{
+    grid-column: 1/4;
+    justify-self: center;
+    padding: 1rem;
+    font-size: 25px;
+}

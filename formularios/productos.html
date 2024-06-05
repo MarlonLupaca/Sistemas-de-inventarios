@@ -87,27 +87,24 @@
 
                 <div class="contenido--de--empleados espaciado">
                     <div>
-                        <button class="button" id="btn--new--empleado">Producto nuevo +</button>
+                        <button class="button" id="btn--new--producto">Producto nuevo +</button>
                     </div>
                     <div class="inputs">
-                        <input type="text" placeholder="Busqueda por nombre">
-                        <input type="text" placeholder="Busqueda por comprobante">
-                        <input type="text" placeholder="Busqueda por categoria">
+                        <input type="text" placeholder="Busqueda por Categoria" id="InputCategoria">
+                        <input type="text" placeholder="Busqueda por Producto" id="InputNombre">
+                        <input type="text" placeholder="Busqueda por Proveedor" id="InputProveedor">
                     </div>
                     <div class="tabla--productos--contenedor">
-                        <table class="productos--tabla">
+                        <table class="productos--tabla" id="data">
                             <thead>
                                 <tr>
                                     <th>Categoria</th>
                                     <th>Producto</th>
                                     <th>Proveedor</th>
-                                    <th>comprobante</th> 
                                     <th>Stocks</th>
                                     <th>Min.Aviso</th>
                                     <th>P.Compra</th>
                                     <th>P.Venta</th>
-                                    <th>Entrada</th>
-                                    <th>F.Entrada</th>
                                     <th>Editar</th>
                                 </tr>
                             </thead>
@@ -116,163 +113,15 @@
                                     <td>Electrónicos</td>
                                     <td>Smartphone</td>
                                     <td>Samsung</td>
-                                    <td>Factura-001</td>
                                     <td>50</td>
                                     <td>10</td>
                                     <td>$300</td>
                                     <td>$500</td>
-                                    <td>20</td>
-                                    <td nowrap>2024-05-13</td>
                                     <td nowrap>
                                         <button class="button button--tabla btn--editar btn--ajustable" >Editar</button>
                                         <button class="button button--tabla btn--ajustable" >Eliminar</button>
                                     </td>
-                                </tr>
-                                <tr>
-                                    <td>Electrónicos</td>
-                                    <td>Smartphone</td>
-                                    <td>Samsung</td>
-                                    <td>Factura-001</td>
-                                    <td>50</td>
-                                    <td>10</td>
-                                    <td>$300</td>
-                                    <td>$500</td>
-                                    <td>20</td>
-                                    <td nowrap>2024-05-13</td>
-                                    <td nowrap>
-                                        <button class="button button--tabla btn--editar btn--ajustable" >Editar</button>
-                                        <button class="button button--tabla btn--ajustable" >Eliminar</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Electrónicos</td>
-                                    <td>Smartphone</td>
-                                    <td>Samsung</td>
-                                    <td>Factura-001</td>
-                                    <td>50</td>
-                                    <td>10</td>
-                                    <td>$300</td>
-                                    <td>$500</td>
-                                    <td>20</td>
-                                    <td nowrap>2024-05-13</td>
-                                    <td nowrap>
-                                        <button class="button button--tabla btn--editar btn--ajustable" >Editar</button>
-                                        <button class="button button--tabla btn--ajustable" >Eliminar</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Electrónicos</td>
-                                    <td>Smartphone</td>
-                                    <td>Samsung</td>
-                                    <td>Factura-001</td>
-                                    <td>50</td>
-                                    <td>10</td>
-                                    <td>$300</td>
-                                    <td>$500</td>
-                                    <td>20</td>
-                                    <td nowrap>2024-05-13</td>
-                                    <td nowrap>
-                                        <button class="button button--tabla btn--editar btn--ajustable" >Editar</button>
-                                        <button class="button button--tabla btn--ajustable" >Eliminar</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Electrónicos</td>
-                                    <td>Smartphone</td>
-                                    <td>Samsung</td>
-                                    <td>Factura-001</td>
-                                    <td>50</td>
-                                    <td>10</td>
-                                    <td>$300</td>
-                                    <td>$500</td>
-                                    <td>20</td>
-                                    <td nowrap>2024-05-13</td>
-                                    <td nowrap>
-                                        <button class="button button--tabla btn--editar btn--ajustable" >Editar</button>
-                                        <button class="button button--tabla btn--ajustable" >Eliminar</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Electrónicos</td>
-                                    <td>Smartphone</td>
-                                    <td>Samsung</td>
-                                    <td>Factura-001</td>
-                                    <td>50</td>
-                                    <td>10</td>
-                                    <td>$300</td>
-                                    <td>$500</td>
-                                    <td>20</td>
-                                    <td nowrap>2024-05-13</td>
-                                    <td nowrap>
-                                        <button class="button button--tabla btn--editar btn--ajustable" >Editar</button>
-                                        <button class="button button--tabla btn--ajustable" >Eliminar</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Electrónicos</td>
-                                    <td>Smartphone</td>
-                                    <td>Samsung</td>
-                                    <td>Factura-001</td>
-                                    <td>50</td>
-                                    <td>10</td>
-                                    <td>$300</td>
-                                    <td>$500</td>
-                                    <td>20</td>
-                                    <td nowrap>2024-05-13</td>
-                                    <td nowrap>
-                                        <button class="button button--tabla btn--editar btn--ajustable" >Editar</button>
-                                        <button class="button button--tabla btn--ajustable" >Eliminar</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Electrónicos</td>
-                                    <td>Smartphone</td>
-                                    <td>Samsung</td>
-                                    <td>Factura-001</td>
-                                    <td>50</td>
-                                    <td>10</td>
-                                    <td>$300</td>
-                                    <td>$500</td>
-                                    <td>20</td>
-                                    <td nowrap>2024-05-13</td>
-                                    <td nowrap>
-                                        <button class="button button--tabla btn--editar btn--ajustable" >Editar</button>
-                                        <button class="button button--tabla btn--ajustable" >Eliminar</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Electrónicos</td>
-                                    <td>Smartphone</td>
-                                    <td>Samsung</td>
-                                    <td>Factura-001</td>
-                                    <td>50</td>
-                                    <td>10</td>
-                                    <td>$300</td>
-                                    <td>$500</td>
-                                    <td>20</td>
-                                    <td nowrap>2024-05-13</td>
-                                    <td nowrap>
-                                        <button class="button button--tabla btn--editar btn--ajustable" >Editar</button>
-                                        <button class="button button--tabla btn--ajustable" >Eliminar</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Electrónicos</td>
-                                    <td>Smartphone</td>
-                                    <td>Samsung</td>
-                                    <td>Factura-001</td>
-                                    <td>50</td>
-                                    <td>10</td>
-                                    <td>$300</td>
-                                    <td>$500</td>
-                                    <td>20</td>
-                                    <td nowrap>2024-05-13</td>
-                                    <td nowrap>
-                                        <button class="button button--tabla btn--editar btn--ajustable" >Editar</button>
-                                        <button class="button button--tabla btn--ajustable" >Eliminar</button>
-                                    </td>
-                                </tr>
-                                
+                                </tr>                                
                             </tbody>
                         </table>
                     </div>
@@ -297,19 +146,19 @@
                     </div>
                     <div>
                         <i class="fa-solid fa-shapes"></i>
-                        <input type="text" placeholder="Minimo para aviso">
+                        <input type="text" placeholder="Minimo para aviso" id="minAviso">
                     </div>
                     <div>
                         <i class="fa-solid fa-sack-dollar"></i>
-                        <input type="text" placeholder="Precio de compra">
+                        <input type="text" placeholder="Precio de compra" id="PreCompras">
                     </div>
                     <div>
                         <i class="fa-solid fa-sack-dollar"></i>
-                        <input type="text" placeholder="Precio de venta">
+                        <input type="text" placeholder="Precio de venta" id="PreVenta">
                     </div>
                     <div class="contenedor--botones">
-                        <button type="button" class="button button--form">Guardar</button>
-                        <button type="button"  class="button button--form button--form--cancelar" id="btn--esconder--new--empleado">Cancelar</button>
+                        <button id="btn--nuevo--producto" type="button" class="button button--form">Guardar</button>
+                        <button type="button"  class="button button--form button--form--cancelar" id="btn--esconder--nuevoproducto">Cancelar</button>
                     </div>
                 </form>
             </div>
@@ -320,37 +169,37 @@
                 <form>
                     <div>
                         <i class="fa-solid fa-folder-tree"></i>
-                        <input type="text" placeholder="Categoria" id="inputCategoria">
+                        <input type="text" placeholder="Categoria" id="editCate">
                     </div>
                     <div>
                         <i class="fa-solid fa-shapes"></i>
-                        <input type="text" placeholder="Producto" id="inputProducto">
+                        <input type="text" placeholder="Producto" id="editProdu">
                     </div>
                     <div>
                         <i class="fa-solid fa-clipboard-user"></i>
-                        <input type="text" placeholder="Proveedor" id="inputProveedor">
+                        <input type="text" placeholder="Proveedor" id="editProvee">
                     </div>
                     <div>
                         <i class="fa-solid fa-shapes"></i>
-                        <input type="text" placeholder="Minimo para aviso">
+                        <input type="text" placeholder="Minimo para aviso" id="editMin">
                     </div>
                     <div>
                         <i class="fa-solid fa-sack-dollar"></i>
-                        <input type="text" placeholder="Precio de compra">
+                        <input type="text" placeholder="Precio de compra" id="editCompra">
                     </div>
                     <div>
                         <i class="fa-solid fa-sack-dollar"></i>
-                        <input type="text" placeholder="Precio de venta">
+                        <input type="text" placeholder="Precio de venta" id="editVenta">
                     </div>
                     <div class="contenedor--botones">
-                        <button type="button" class="button button--form">Guardar</button>
-                        <button type="button" class="button button--form button--form--cancelar" id="btn--esconder--editar--empleado">Cancelar</button>
+                        <button type="button" class="button button--form" id="btn--actualizar">Guardar</button>
+                        <button type="button" class="button button--form button--form--cancelar" id="btn--esconder--editar--producto">Cancelar</button>
                     </div>
                 </form>
             </div>
         </section>
     
     <script src="../javascript/script.js"></script>
-    <script src="../javascript/funciones.js"></script>
+    <script src="../javascript/scripProductos.js"></script>
 </body>
 </html>
