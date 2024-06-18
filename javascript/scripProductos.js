@@ -1,4 +1,7 @@
+
 document.addEventListener("DOMContentLoaded", () => {
+    
+    
     // Obtener referencias a los elementos del DOM
     const inputCategoria = document.getElementById("inputCategoria");
     const inputProducto = document.getElementById("inputProducto");
@@ -22,6 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
     btnActualizar.addEventListener("click", actulizar)
 
     btnModalNewProdcuto.addEventListener("click", () => {
+        
         modal.classList.toggle("modal--view");
     });
 
@@ -43,37 +47,55 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Función para cargar los datos desde el localStorage
     function cargarDatos() {
-        let listaProductos = localStorage.getItem("listaProductos") ? JSON.parse(localStorage.getItem("listaProductos")) : [];
-        const tbody = document.querySelector("#data tbody");
-        let html = "";
-        listaProductos.forEach((elemento, index) => {
-            html += `<tr>
-                        <td>${elemento.categoria}</td>
-                        <td>${elemento.producto}</td>
-                        <td>${elemento.proveedor}</td>
-                        <td></td>
-                        <td>${elemento.minAviso}</td>
-                        <td>${elemento.PreCompras}</td>
-                        <td>${elemento.PreVenta}</td>
-                        <td nowrap>
-                            <button class="btn--editar button button--tabla btn--ajustable" onclick="editarDato(${index})">Editar</button>
-                            <button class="button button--tabla btn--ajustable" onclick="eliminarDato(${index})">Eliminar</button>
-                        </td>
-                    </tr>`;
-        });
-        tbody.innerHTML = html; // Reemplaza el contenido del tbody con el nuevo HTML
-
-        // Aquí seleccionamos los botones de editar después de que se hayan cargado en el DOM
-        const btnsEditarProducto = document.querySelectorAll(".btn--editar");
-        btnsEditarProducto.forEach(btn => {
-            btn.addEventListener("click", () => {
-                modalEditar.classList.toggle("modal--view");
-            });
+        axios.get("../php/productos.php")
+        .then(response => {
+            const datos = response.data;
+    
+            if (datos.length > 0) {
+                const tbody = document.querySelector("#data tbody");
+                let html = "";
+    
+                datos.forEach((elemento) => {
+                    html += `<tr>
+                                <td>${elemento.categoria}</td>
+                                <td>${elemento.producto}</td>
+                                <td>${elemento.proveedor}</td>
+                                <td>${elemento.stocks}</td>
+                                <td>${elemento.min_aviso}</td>
+                                <td>${elemento.p_compra}</td>
+                                <td>${elemento.p_venta}</td>
+                                <td nowrap>
+                                    <button class="btn--editar button button--tabla btn--ajustable" onclick="editarDato(${elemento.id})">Editar</button>
+                                    <button class="button button--tabla btn--ajustable" onclick="eliminarDato(${elemento.id})">Eliminar</button>
+                                </td>
+                            </tr>`;
+                });
+    
+                tbody.innerHTML = html;
+    
+                // Aquí seleccionamos los botones de editar después de que se hayan cargado en el DOM
+                const btnsEditarProducto = document.querySelectorAll(".btn--editar");
+                btnsEditarProducto.forEach(btn => {
+                    btn.addEventListener("click", () => {
+                        modalEditar.classList.toggle("modal--view");
+                    });
+                });
+            } else {
+                // Manejar el caso donde no hay datos
+                const tbody = document.querySelector("#data tbody");
+                tbody.innerHTML = '<tr><td colspan="7">No se encontraron productos</td></tr>';
+            }
+        })
+        .catch(error => {
+            console.error('Error en la solicitud Axios:', error);
         });
     }
+    
 
-    // Función para agregar un nuevo producto
+    
+    // Función para agregar un nuevo producto usando Axios
     function agregarDato() {
+        // Validar campos
         if (validarCampos()) {
             const categoria = inputCategoria.value;
             const producto = inputProducto.value;
@@ -82,64 +104,71 @@ document.addEventListener("DOMContentLoaded", () => {
             const PreComprasValor = PreCompras.value;
             const PreVentaValor = PreVenta.value;
 
-            let listaProductos = localStorage.getItem("listaProductos") ? JSON.parse(localStorage.getItem("listaProductos")) : [];
-
-            listaProductos.push({
+            // Objeto con los datos del nuevo producto
+            const nuevoProducto = {
                 categoria: categoria,
                 producto: producto,
                 proveedor: proveedor,
-                minAviso: minAvisoValor,
-                PreCompras: PreComprasValor,
-                PreVenta: PreVentaValor
-            });
+                stocks: 0,
+                min_aviso: minAvisoValor,
+                p_compra: PreComprasValor,
+                p_venta: PreVentaValor
+            };
 
-            localStorage.setItem("listaProductos", JSON.stringify(listaProductos));
-            
-            cargarDatos();
-
-            // Vaciar los campos de entrada
-            inputCategoria.value = "";
-            inputProducto.value = "";
-            inputProveedor.value = "";
-            minAviso.value = "";
-            PreCompras.value = "";
-            PreVenta.value = "";
-
-            // Simular clic en el botón para cerrar la ventana de registro
-            btnCerrarModal.click();
+            // Realizar la solicitud POST usando Axios
+            axios.post("../php/productos.php", nuevoProducto)
+                .then(response => {
+                    console.log(response.data); // Manejar la respuesta si es necesario
+                    cargarDatos(); // Volver a cargar los datos después de agregar el producto
+                    
+                })
+                .catch(error => {
+                    console.error('Error en la solicitud Axios:', error);
+                    alert("Error al agregar producto. Por favor, intenta nuevamente.");
+                });
         } else {
-            alert("Falta llenar campos")
         }
     }
 
+
     // Función para eliminar un producto
     window.eliminarDato = function(index) {
-        let listaProductos = localStorage.getItem("listaProductos") ? JSON.parse(localStorage.getItem("listaProductos")) : [];
-        listaProductos.splice(index, 1);
-        localStorage.setItem("listaProductos", JSON.stringify(listaProductos));
-        cargarDatos();
+        axios.delete(`../php/productos.php?id=${index}`)
+        .then(response => {
+            console.log(response.data); // Manejar la respuesta si es necesario
+            cargarDatos(); // Volver a cargar los datos después de eliminar el producto
+        })
+        .catch(error => {
+            console.error('Error en la solicitud Axios:', error);
+            alert("Error al eliminar producto. Por favor, intenta nuevamente.");
+        });
     }
 
     window.editarDato = function(index){
-        let listaProductos = localStorage.getItem("listaProductos") ? JSON.parse(localStorage.getItem("listaProductos")) : [];
-        var objProducto = listaProductos[index];
+        axios.get(`../php/productos.php?id=${index}`)
+        .then(response => {
+            const datos = response.data;
 
-        const edinputCategoria = document.getElementById("editCate");
-        const edinputProducto = document.getElementById("editProdu");
-        const edinputProveedor = document.getElementById("editProvee");
-        const edminAviso = document.getElementById("editMin");
-        const edPreCompras = document.getElementById("editCompra");
-        const edPreVenta = document.getElementById("editVenta");
+            console.log(datos)
+            var objProducto = datos[0];
+            const edinputCategoria = document.getElementById("editCate");
+            const edinputProducto = document.getElementById("editProdu");
+            const edinputProveedor = document.getElementById("editProvee");
+            const edminAviso = document.getElementById("editMin");
+            const edPreCompras = document.getElementById("editCompra");
+            const edPreVenta = document.getElementById("editVenta");
 
-        edinputCategoria.value = objProducto.categoria;
-        edinputProducto.value = objProducto.producto;
-        edinputProveedor.value = objProducto.proveedor;
-        edminAviso.value = objProducto.minAviso;
-        edPreCompras.value = objProducto.PreCompras;
-        edPreVenta.value = objProducto.PreVenta;
+            edinputCategoria.value = objProducto.categoria;
+            edinputProducto.value = objProducto.producto;
+            edinputProveedor.value = objProducto.proveedor;
+            edminAviso.value = objProducto.min_aviso;
+            edPreCompras.value = objProducto.p_compra;
+            edPreVenta.value = objProducto.p_venta;
 
-        indice = index;
-        //btnnNewProducto.click();
+        })
+
+        //indice = index;
+
     }
 
 

@@ -6,6 +6,7 @@
 
 }
 *{
+    
     margin: 0;
     padding: 0;
     border: none;
@@ -97,4 +98,6 @@ th {
     height: 390px;
     margin-top: 50px;
 }
-
+.contenedor--modal h2{
+    font-size: 1.5rem;
+}
