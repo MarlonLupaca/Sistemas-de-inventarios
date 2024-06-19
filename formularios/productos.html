@@ -112,20 +112,7 @@
                                     <th>Editar</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Electrónicos</td>
-                                    <td>Smartphone</td>
-                                    <td>Samsung</td>
-                                    <td>50</td>
-                                    <td>10</td>
-                                    <td>$300</td>
-                                    <td>$500</td>
-                                    <td nowrap>
-                                        <button class="button button--tabla btn--editar btn--ajustable" >Editar</button>
-                                        <button class="button button--tabla btn--ajustable" >Eliminar</button>
-                                    </td>
-                                </tr>                                
+                            <tbody>                           
                             </tbody>
                         </table>
                     </div>
@@ -162,7 +149,7 @@
                     </div>
                     <div class="contenedor--botones">
                         <button id="btn--nuevo--producto" type="submit" class="button button--form">Guardar</button>
-                        <button type="reset"  class="button button--form button--form--cancelar" id="btn--esconder--nuevoproducto">Cancelar</button>
+                        <button type="button"  class="button button--form button--form--cancelar" id="btn--esconder--nuevoproducto">Cancelar</button>
                     </div>
                 </form>
             </div>
@@ -185,19 +172,19 @@
                     </div>
                     <div>
                         <i class="fa-solid fa-shapes"></i>
-                        <input type="text" class="form-control" placeholder="Minimo para aviso" id="editMin" required>
+                        <input type="number" class="form-control" placeholder="Minimo para aviso" min="0" id="editMin" required>
                     </div>
                     <div>
                         <i class="fa-solid fa-sack-dollar"></i>
-                        <input type="text" class="form-control" placeholder="Precio de compra" id="editCompra" required>
+                        <input type="number" class="form-control" placeholder="Precio de compra" min="0" id="editCompra" required>
                     </div>
                     <div>
                         <i class="fa-solid fa-sack-dollar"></i>
-                        <input type="text" class="form-control" placeholder="Precio de venta" id="editVenta" required>
+                        <input type="number" class="form-control" placeholder="Precio de venta" min="0" id="editVenta" required>
                     </div>
                     <div class="contenedor--botones">
                         <button type="submit" class="button button--form" id="btn--actualizar">Guardar</button>
-                        <button type="reset" class="button button--form button--form--cancelar" id="btn--esconder--editar--producto">Cancelar</button>
+                        <button type="button" class="button button--form button--form--cancelar" id="btn--esconder--editar--producto">Cancelar</button>
                     </div>
                 </form>
             </div>

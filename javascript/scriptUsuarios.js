@@ -1,140 +1,257 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const modalNewUser = document.querySelector('.modal');
-    const modalEditUser = document.querySelector('.modal--editar');
-    const btnHideNewUser = document.getElementById('btn--esconder--new--empleado');
-    const btnHideEditUser = document.getElementById('btn--esconder--editar--empleado');
-    const userTableBody = document.querySelector('.empleados--tabla tbody');
-    const searchInputs = document.querySelectorAll('.inputs input');
-
+document.addEventListener("DOMContentLoaded", () => {
     const btnNuevoUsuario = document.getElementById("btn--nuevo--usuario");
+    const modalNuevoUsuario = document.querySelector(".modal");
 
-    btnNuevoUsuario.addEventListener("click", mostrarModal);
+    const modalEditarUsuario = document.querySelector(".modal--editar");
+
+    const btnCancelarNuevoUsuario = document.getElementById("btn--esconder--new--usuario");
+    let indice = -1;
+
+    // Mostrar modal para nuevo usuario
+    btnNuevoUsuario.addEventListener("click", () => {
+        modalNuevoUsuario.classList.toggle("modal--view");
+    });
+
+    // Ocultar modal de nuevo usuario
+    btnCancelarNuevoUsuario.addEventListener("click", () => {
+        modalNuevoUsuario.classList.toggle("modal--view");
+    });
+
+    const btn_Esconder_Actualizar = document.getElementById("btn_usuario_esconder");
+
+    btn_Esconder_Actualizar.addEventListener("click", () => {
+        modalEditarUsuario.classList.toggle("modal--view");
+    });
+
+
     
-    function mostrarModal(){
-        modalNewUser.classList.toggle("modal--view");
+
+    function cargarDatos() {
+        axios.get("../php/usuarios.php")
+            .then(response => {
+                const datos = response.data;
+                if (datos.length > 0 && Array.isArray(datos)) {
+                    const tbody = document.querySelector("#data tbody");
+                    let html = "";
+                    datos.forEach(usuario => {
+                        html += `
+                            <tr>
+                                <td>${usuario.id}</td>
+                                <td>${usuario.nombre}</td>
+                                <td>${usuario.usuario}</td>
+                                <td>${usuario.contrasena}</td>
+                                <td>${usuario.fecha_registro}</td>
+                                <td>${usuario.cargo}</td>
+                                <td nowrap>
+                                    <button class="button button--tabla btn--editar" onclick="editarDato(${usuario.id})">Editar</button>
+                                    <button class="button button--tabla" onclick="eliminarDato(${usuario.id})">Eliminar</button>
+                                </td>
+                            </tr>
+                        `;
+                    });
+
+                    tbody.innerHTML = html;
+                    // Aquí seleccionamos los botones de editar después de que se hayan cargado en el DOM
+                    const btnsEditarEmpleado = document.querySelectorAll(".btn--editar");
+
+                    btnsEditarEmpleado.forEach(btn => {
+                        btn.addEventListener("click", () => {
+                            modalEditarUsuario.classList.toggle("modal--view");
+                        });
+                    });
+                }else {
+                    // Manejar el caso donde no hay datos
+                    const tbody = document.querySelector("#data tbody");
+                    tbody.innerHTML = '<tr><td colspan="7">No se encontraron productos</td></tr>';
+                }
+            })
+            .catch(error => {
+                console.error('Error en la solicitud Axios:', error);
+            });
     }
 
-    const getUsersFromLocalStorage = () => {
-        return JSON.parse(localStorage.getItem('users')) || [];
-    };
+    const btnGuardarDato = document.getElementById("agregar_Usuario");
+    btnGuardarDato.addEventListener("click", agregarDato)
 
-    const saveUsersToLocalStorage = (users) => {
-        localStorage.setItem('users', JSON.stringify(users));
-    };
+    
 
-    const renderUsers = (users) => {
-        userTableBody.innerHTML = '';
-        users.forEach((user, index) => {
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td>${user.name}</td>
-                <td>${user.email}</td>
-                <td>${user.phone}</td>
-                <td>${user.role}</td>
-                <td>
-                    <button class="button button--tabla btn--editar" data-index="${index}">Editar</button>
-                    <button class="button button--tabla btn--eliminar" data-index="${index}">Eliminar</button>
-                </td>
-            `;
-            userTableBody.appendChild(row);
-        });
+    function validarCampos() {
+        const NombreAgregar = document.getElementById("agregarNombre").value;
+        const UsuarioAgregar = document.getElementById("agregarUsuario").value;
+        const ContraseniaAgregar = document.getElementById("agregarContrasenia").value;
+        const CargoAgregar = document.getElementById("agregarCargo").value;
+    
+        return NombreAgregar && UsuarioAgregar && ContraseniaAgregar && CargoAgregar;
+    }
 
-        document.querySelectorAll('.btn--editar').forEach(button => {
-            button.addEventListener('click', handleEditUser);
-        });
+    function agregarDato() {
+        
+        if (validarCampos()) {
+            
+            const NombreAgregar = document.getElementById("agregarNombre").value;
+            const UsuarioAgregar = document.getElementById("agregarUsuario").value;
+            const ContraseniaAgregar = document.getElementById("agregarContrasenia").value;
+            const CargoAgregar = document.getElementById("agregarCargo").value;
 
-        document.querySelectorAll('.btn--eliminar').forEach(button => {
-            button.addEventListener('click', handleDeleteUser);
-        });
-    };
-
-    const handleAddUser = () => {
-        const name = modalNewUser.querySelector('input[placeholder="Nombre"]').value;
-        const email = modalNewUser.querySelector('input[placeholder="Correo electrónico"]').value;
-        const phone = modalNewUser.querySelector('input[placeholder="Teléfono"]').value;
-        const roleSelect = modalNewUser.querySelector('select');
-        const role = roleSelect.value;
-
-        if (name && email && phone && role) {
-            const users = getUsersFromLocalStorage();
-            users.push({ name, email, phone, role });
-            saveUsersToLocalStorage(users);
-            renderUsers(users);
-            modalNewUser.classList.remove('modal--view');
-            modalNewUser.querySelector('input[placeholder="Nombre"]').value = '';
-            modalNewUser.querySelector('input[placeholder="Correo electrónico"]').value = '';
-            modalNewUser.querySelector('input[placeholder="Teléfono"]').value = '';
-        } else {
-            alert('Por favor, completa todos los campos.');
-        }
-    };
-
-    const handleEditUser = (event) => {
-        const index = event.target.dataset.index;
-        const users = getUsersFromLocalStorage();
-
-        // Verificar si el índice es válido
-        if (users[index]) {
-            const user = users[index];
-
-            modalEditUser.querySelector('input[placeholder="Nombre"]').value = user.name;
-            modalEditUser.querySelector('input[placeholder="Correo electrónico"]').value = user.email;
-            modalEditUser.querySelector('input[placeholder="Teléfono"]').value = user.phone;
-            const roleSelect = modalEditUser.querySelector('select');
-            roleSelect.value = user.role;
-
-            modalEditUser.classList.add('modal--view');
-
-            modalEditUser.querySelector('.button--form').onclick = () => {
-                user.name = modalEditUser.querySelector('input[placeholder="Nombre"]').value;
-                user.email = modalEditUser.querySelector('input[placeholder="Correo electrónico"]').value;
-                user.phone = modalEditUser.querySelector('input[placeholder="Teléfono"]').value;
-                user.role = roleSelect.value;
-
-                users[index] = user;
-                saveUsersToLocalStorage(users);
-                renderUsers(users);
-                modalEditUser.classList.remove('modal--view');
+            
+            const nuevoUsuario={
+                nombre: NombreAgregar,
+                usuario: UsuarioAgregar,
+                contrasenia: ContraseniaAgregar,
+                cargo: CargoAgregar
             };
+            
+            
+            
+            axios.post("../php/usuarios.php", nuevoUsuario)
+                .then(response => {
+                    console.log(response.data); // Manejar la respuesta si es necesario
+                    cargarDatos(); // Volver a cargar los datos después de agregar el producto
+                    
+                })
+                .catch(error => {
+                    console.error('Error en la solicitud Axios:', error);
+                    alert("Error al agregar producto. Por favor, intenta nuevamente.");
+                });
         } else {
-            console.error(`No se encontró un usuario en el índice ${index}`);
+            
         }
-    };
+    }
+    window.eliminarDato = function(index) {
+        axios.delete(`../php/usuarios.php?id=${index}`)
+        .then(response => {
+            console.log(response.data); // Manejar la respuesta si es necesario
+            cargarDatos(); // Volver a cargar los datos después de eliminar el producto
+        })
+        .catch(error => {
+            console.error('Error en la solicitud Axios:', error);
+            alert("Error al eliminar producto. Por favor, intenta nuevamente.");
+        });
+    }
+    window.editarDato = function(index){
+        console.log(index)
+        indice = index;
+        axios.get(`../php/usuarios.php?id=${index}`)
 
-    const handleDeleteUser = (event) => {
-        const index = event.target.dataset.index;
-        const users = getUsersFromLocalStorage();
-        users.splice(index, 1);
-        saveUsersToLocalStorage(users);
-        renderUsers(users);
-    };
+        .then(response => {
+            const datos = response.data;
 
-    const handleSearchUsers = () => {
-        const query = Array.from(searchInputs).map(input => input.value.toLowerCase());
-        const users = getUsersFromLocalStorage();
+            var objUsuario = datos[0];
+            const Nombre = document.getElementById("edit_Nombre");
+            const usuario = document.getElementById("edit_Usuario");
+            const contrasenia = document.getElementById("edit_contrasenia");
+            const cargo = document.getElementById("edit_rango");
 
-        const filteredUsers = users.filter(user =>
-            user.name.toLowerCase().includes(query[0]) &&
-            user.role.toLowerCase().includes(query[1]) && 
-            user.email.toLowerCase().includes(query[2])
-        );
+            Nombre.value = objUsuario.nombre;
+            usuario.value = objUsuario.usuario;
+            contrasenia.value = objUsuario.contrasena;
+            cargo.value = objUsuario.cargo;
+        })
+        .catch(error => {
+            console.error('Error en la solicitud Axios:', error);
+            alert("Error al eliminar producto. Por favor, intenta nuevamente.");
+        });
+    }
 
-        renderUsers(filteredUsers);
-    };
+    const bt_actualizar = document.getElementById("btn_Actualizar")
 
-    searchInputs.forEach(input => {
-        input.addEventListener('input', handleSearchUsers);
+    bt_actualizar.addEventListener("click", actulizar)
+
+
+    function actulizar(){
+
+        const Nombre = document.getElementById("edit_Nombre").value;
+        const usuario = document.getElementById("edit_Usuario").value;
+        const contrasenia = document.getElementById("edit_contrasenia").value;
+        const cargo = document.getElementById("edit_rango").value;
+        
+        const nuevoProveedor={
+            id:indice,
+            nombre: Nombre,
+            usuario: usuario,
+            contrasena: contrasenia,
+            cargo: cargo
+        };
+
+        axios.put("../php/usuarios.php", nuevoProveedor)
+        .then(response => {
+            console.log(response.data); // Manejar la respuesta si es necesario
+            cargarDatos(); // Volver a cargar los datos después de agregar el producto
+            
+        })
+        .catch(error => {
+            console.error('Error en la solicitud Axios:', error);
+            alert("Error al agregar producto. Por favor, intenta nuevamente.");
+        });
+    }
+
+    const inputNombre = document.getElementById("input_nombre");
+    const inputRango = document.getElementById("input_rango");
+    const inputUsuario = document.getElementById("input_usuario");
+
+    inputNombre.addEventListener("input", () => {
+        const inputNombreValor = inputNombre.value;
+        filtradoNombre(inputNombreValor, "nombre");
     });
 
-    modalNewUser.querySelector('.button--form').addEventListener('click', handleAddUser);
-
-    btnHideNewUser.addEventListener('click', () => {
-        modalNewUser.classList.remove('modal--view');
+    inputRango.addEventListener("input", () => {
+        const inputCategoriaValor = inputRango.value;
+        filtradoNombre(inputCategoriaValor, "rango");
     });
 
-    btnHideEditUser.addEventListener('click', () => {
-        modalEditUser.classList.remove('modal--view');
+    inputUsuario.addEventListener("input", () => {
+        const inputProveedorValor = inputUsuario.value;
+        filtradoNombre(inputProveedorValor, "usuario");
     });
 
-    renderUsers(getUsersFromLocalStorage());
+    function eliminarAcentos(texto) {
+        return texto.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+    };
+
+    function filtradoNombre(valor, tipo) {
+        axios.get("../php/usuarios.php")
+        .then(response => {
+            const listaUsuarios = response.data;
+
+            if (tipo === "nombre") {
+                listaFiltrada = listaUsuarios.filter(elemento => eliminarAcentos(elemento.nombre.toUpperCase()).includes(eliminarAcentos(valor.toUpperCase())));
+            } else if (tipo === "rango") {
+                listaFiltrada = listaUsuarios.filter(elemento => eliminarAcentos(elemento.cargo.toUpperCase()).includes(eliminarAcentos(valor.toUpperCase())));
+            } else if (tipo === "usuario") {
+                listaFiltrada = listaUsuarios.filter(elemento => eliminarAcentos(elemento.usuario.toUpperCase()).includes(eliminarAcentos(valor.toUpperCase())));
+            }
+    
+            const tbody = document.querySelector("#data tbody");
+            let html = "";
+            listaFiltrada.forEach((usuario) => {
+                html += `
+                            <tr>
+                                <td>${usuario.id}</td>
+                                <td>${usuario.nombre}</td>
+                                <td>${usuario.usuario}</td>
+                                <td>${usuario.contrasena}</td>
+                                <td>${usuario.fecha_registro}</td>
+                                <td>${usuario.cargo}</td>
+                                <td nowrap>
+                                    <button class="button button--tabla btn--editar" onclick="editarDato(${usuario.id})">Editar</button>
+                                    <button class="button button--tabla" onclick="eliminarDato(${usuario.id})">Eliminar</button>
+                                </td>
+                            </tr>
+                        `;
+            });
+            tbody.innerHTML = html; // Reemplaza el contenido del tbody con el nuevo HTML
+        
+
+        })
+        .catch(error => {
+            console.error('Error en la solicitud Axios:', error);
+        });
+
+
+
+    }
+
+
+
+    cargarDatos();
 });

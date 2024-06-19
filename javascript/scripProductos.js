@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(response => {
             const datos = response.data;
     
-            if (datos.length > 0) {
+            if (datos.length > 0 && Array.isArray(datos)) {
                 const tbody = document.querySelector("#data tbody");
                 let html = "";
     
@@ -133,6 +133,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Función para eliminar un producto
     window.eliminarDato = function(index) {
+        
         axios.delete(`../php/productos.php?id=${index}`)
         .then(response => {
             console.log(response.data); // Manejar la respuesta si es necesario
@@ -145,6 +146,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     window.editarDato = function(index){
+        indice = index;
         axios.get(`../php/productos.php?id=${index}`)
         .then(response => {
             const datos = response.data;
@@ -166,16 +168,18 @@ document.addEventListener("DOMContentLoaded", () => {
             edPreVenta.value = objProducto.p_venta;
 
         })
+        .catch(error => {
+            console.error('Error en la solicitud Axios:', error);
+            alert("Error al eliminar producto. Por favor, intenta nuevamente.");
+        });
 
-        //indice = index;
+        
 
     }
 
 
     //funcion de actualizar
     function actulizar(){
-        let listaProductos = localStorage.getItem("listaProductos") ? JSON.parse(localStorage.getItem("listaProductos")) : [];
-
         const edinputCategoria = document.getElementById("editCate").value;
         const edinputProducto = document.getElementById("editProdu").value;
         const edinputProveedor = document.getElementById("editProvee").value;
@@ -183,18 +187,26 @@ document.addEventListener("DOMContentLoaded", () => {
         const edPreCompras = document.getElementById("editCompra").value;
         const edPreVenta = document.getElementById("editVenta").value;
 
-        listaProductos[indice] = {
+        const actualizarProducto = {
+            id: indice,
             categoria: edinputCategoria,
             producto: edinputProducto,
             proveedor: edinputProveedor,
-            minAviso: edminAviso,
-            PreCompras: edPreCompras,
-            PreVenta: edPreVenta
+            stocks: 0,
+            min_aviso: edminAviso,
+            p_compra: edPreCompras,
+            p_venta: edPreVenta
         };
-
-        localStorage.setItem("listaProductos", JSON.stringify(listaProductos));
-        cargarDatos();
-        btnOcultarModal.click();
+        axios.put("../php/productos.php", actualizarProducto)
+        .then(response => {
+            console.log(response.data); // Manejar la respuesta si es necesario
+            cargarDatos(); // Volver a cargar los datos después de agregar el producto
+            
+        })
+        .catch(error => {
+            console.error('Error en la solicitud Axios:', error);
+            alert("Error al agregar producto. Por favor, intenta nuevamente.");
+        });
     }
 
     const inputNombreFilter = document.getElementById("InputNombre");
@@ -216,42 +228,52 @@ document.addEventListener("DOMContentLoaded", () => {
         filtradoNombre(inputProveedorValor, "proveedor");
     });
 
+
+    function eliminarAcentos(texto) {
+        return texto.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+    };
+
     function filtradoNombre(valor, tipo) {
-        let listaProductos = localStorage.getItem("listaProductos") ? JSON.parse(localStorage.getItem("listaProductos")) : [];
+        axios.get("../php/productos.php")
+        .then(response => {
+            const listaProductos = response.data;
 
-        let listaFiltrada = [];
+            if (tipo === "nombre") {
+                listaFiltrada = listaProductos.filter(elemento => eliminarAcentos(elemento.producto.toUpperCase()).includes(eliminarAcentos(valor.toUpperCase())));
+            } else if (tipo === "categoria") {
+                listaFiltrada = listaProductos.filter(elemento => eliminarAcentos(elemento.categoria.toUpperCase()).includes(eliminarAcentos(valor.toUpperCase())));
+            } else if (tipo === "proveedor") {
+                listaFiltrada = listaProductos.filter(elemento => eliminarAcentos(elemento.proveedor.toUpperCase()).includes(eliminarAcentos(valor.toUpperCase())));
+            }
+    
+            const tbody = document.querySelector("#data tbody");
+            let html = "";
+            listaFiltrada.forEach((elemento) => {
+                html += `<tr>
+                                <td>${elemento.categoria}</td>
+                                <td>${elemento.producto}</td>
+                                <td>${elemento.proveedor}</td>
+                                <td>${elemento.stocks}</td>
+                                <td>${elemento.min_aviso}</td>
+                                <td>${elemento.p_compra}</td>
+                                <td>${elemento.p_venta}</td>
+                                <td nowrap>
+                                    <button class="btn--editar button button--tabla btn--ajustable" onclick="editarDato(${elemento.id})">Editar</button>
+                                    <button class="button button--tabla btn--ajustable" onclick="eliminarDato(${elemento.id})">Eliminar</button>
+                                </td>
+                            </tr>`;
+            });
+            tbody.innerHTML = html; // Reemplaza el contenido del tbody con el nuevo HTML
+        
 
-        if (tipo === "nombre") {
-            listaFiltrada = listaProductos.filter(elemento => elemento.producto.includes(valor));
-        } else if (tipo === "categoria") {
-            listaFiltrada = listaProductos.filter(elemento => elemento.categoria.includes(valor));
-        } else if (tipo === "proveedor") {
-            listaFiltrada = listaProductos.filter(elemento => elemento.proveedor.includes(valor));
-        }
-
-        const tbody = document.querySelector("#data tbody");
-        let html = "";
-        listaFiltrada.forEach((elemento, index) => {
-            html += `<tr>
-                        <td>${elemento.categoria}</td>
-                        <td>${elemento.producto}</td>
-                        <td>${elemento.proveedor}</td>
-                        <td></td>
-                        <td>${elemento.minAviso}</td>
-                        <td>${elemento.PreCompras}</td>
-                        <td>${elemento.PreVenta}</td>
-                        <td nowrap>
-                            <button class="btn--editar button button--tabla btn--ajustable" onclick="editarDato(${index})">Editar</button>
-                            <button class="button button--tabla btn--ajustable" onclick="eliminarDato(${index})">Eliminar</button>
-                        </td>
-                    </tr>`;
+        })
+        .catch(error => {
+            console.error('Error en la solicitud Axios:', error);
         });
-        tbody.innerHTML = html; // Reemplaza el contenido del tbody con el nuevo HTML
+
+
+
     }
-
-
-
-
 
 
     // Cargar los datos al inicio

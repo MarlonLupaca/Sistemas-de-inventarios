@@ -3,16 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const btnNewProveedor = document.getElementById("btn--new--proveedor");
     const btnEscoderNewProveedor = document.getElementById("btn--esconder--new--proveedor");
     const btnEconderEditar = document.getElementById("btn--esconder--editar--proveedor");
-    const btnGuardarDato = document.getElementById("guardarDdato");
-
-    //Campos
-    const Nombre = document.getElementById("inputNombre");
-    const Direccion = document.getElementById("inputDireccion");
-    const Correo = document.getElementById("inputCorreo");
-    const Contacto = document.getElementById("inputContacto");
-    const TipoDeProducto = document.getElementById("inputTipoProductos");
-    const Pago = document.getElementById("inputFpago");
-    const EstadoProveedor = document.getElementById("inputEstado");
+    const btnGuardarDato = document.getElementById("guardar_Proveedor");
 
     let indice = -1;
 
@@ -37,23 +28,40 @@ document.addEventListener("DOMContentLoaded", () => {
     })
 
     function validarCampos() {
-        return Nombre.value && Direccion.value && Correo.value && Contacto.value && TipoDeProducto.value && Pago.value && EstadoProveedor.value;
-    }
+        const nombre = document.getElementById("input_Nombre").value;
+        const direccion = document.getElementById("input_Direccion").value;
+        const correo = document.getElementById("input_Correo").value;
+        const contacto = document.getElementById("input_Contacto").value;
+        const tipoDeProductos = document.getElementById("input_TipoProductos").value;
+        const formaDePago = document.getElementById("input_Fpago").value;
+        const estadoProveedor = document.getElementById("input_Estado").value;
 
+        
+        console.log("Nombre:", nombre);
+        console.log("Dirección:", direccion);
+        console.log("Correo:", correo);
+        console.log("Contacto:", contacto);
+        console.log("Tipo de Producto:", tipoDeProductos);
+        console.log("Pago:", formaDePago);
+        console.log("Estado Proveedor:", estadoProveedor);
+        
+        // Validación de los campos
+        return nombre && direccion && correo.includes("@") && contacto && tipoDeProductos && formaDePago && estadoProveedor;
+    }
+    
     function agregarDato() {
         if (validarCampos()) {
-            
-            const NombreAgregar = Nombre.value;
-            const DireccionAgregar = Direccion.value;
-            const CorreoAgregar = Correo.value;
-            const ContactoAgregar = Contacto.value;
-            const TipoDeProductoAgregar = TipoDeProducto.value;
-            const PagoAgregar = Pago.value;
-            const EstadoProveedorAgregar = EstadoProveedor.value;
-
-            let listaProveedores = localStorage.getItem("listaProveedores") ? JSON.parse(localStorage.getItem("listaProveedores")) : [];
-
-            listaProveedores.push({
+            // Obtener los valores de los campos nuevamente para asegurarse de que estén actualizados
+            const NombreAgregar = document.getElementById("input_Nombre").value;
+            const DireccionAgregar = document.getElementById("input_Direccion").value;
+            const CorreoAgregar = document.getElementById("input_Correo").value;
+            const ContactoAgregar = document.getElementById("input_Contacto").value;
+            const TipoDeProductoAgregar = document.getElementById("input_TipoProductos").value;
+            const PagoAgregar = document.getElementById("input_Fpago").value;
+            const EstadoProveedorAgregar = document.getElementById("input_Estado").value;
+    
+            // Crear el objeto con los datos a enviar
+            const nuevoProveedor = {
                 Nombre: NombreAgregar,
                 Direccion: DireccionAgregar,
                 Correo: CorreoAgregar,
@@ -61,87 +69,217 @@ document.addEventListener("DOMContentLoaded", () => {
                 TipoDeProducto: TipoDeProductoAgregar,
                 Pago: PagoAgregar,
                 EstadoProveedor: EstadoProveedorAgregar
-            });
-
-            localStorage.setItem("listaProveedores", JSON.stringify(listaProveedores));
-            
-            cargarDatos();
-
-            // Vaciar los campos de entrada
-            Nombre.value = "";
-            Direccion.value = "";
-            Correo.value = "";
-            Contacto.value = "";
-            TipoDeProducto.value = "";
-            Pago.value = "";
-            EstadoProveedor.value = "";
-
-            // Simular clic en el botón para cerrar la ventana de registro
-            btnEscoderNewProveedor.click();
+            };
+    
+            console.log(nuevoProveedor);
+    
+            // Ejemplo de uso de axios para enviar los datos a un servidor
+            axios.post("../php/proveedores.php", nuevoProveedor)
+                .then(response => {
+                    console.log(response.data); // Manejar la respuesta si es necesario
+                    cargarDatos(); // Volver a cargar los datos después de agregar el proveedor
+                })
+                .catch(error => {
+                    console.error('Error en la solicitud Axios:', error);
+                    alert("Error al agregar proveedor. Por favor, intenta nuevamente.");
+                });
         } else {
-            alert("Falta llenar campos")
+            // Manejo de la validación fallida (puedes mostrar un mensaje de error o realizar alguna acción)
+            alert("Por favor completa todos los campos correctamente.");
         }
     }
+    
+    
     function cargarDatos() {
-        let listaProveedores = localStorage.getItem("listaProveedores") ? JSON.parse(localStorage.getItem("listaProveedores")) : [];
+        axios.get("../php/proveedores.php")
+        .then(response => {
+            const datos = response.data;
+            if (datos.length > 0 && Array.isArray(datos)) {
+                const tbody = document.querySelector("#data tbody");
+                let html = "";
+                datos.forEach((elemento) => {
+                    html += `<tr>
+                                <td>${elemento.Nombre}</td>
+                                <td>${elemento.Direccion}</td>
+                                <td>${elemento.Email}</td>
+                                <td>${elemento.ContactoPrincipal}</td>
+                                <td>${elemento.TipoProductos}</td>
+                                <td>${elemento.FormaPago}</td>
+                                <td>${elemento.Estado}</td>
+                                <td nowrap>
+                                    <button class="button button--tabla btn--editar" onclick="editarDato(${elemento.id})">Editar</button>
+                                    <button class="button button--tabla" onclick="eliminarDato(${elemento.id})">Eliminar</button>
+                                </td>
+                            </tr>`;
+                });
 
-        const tbody = document.querySelector("#data tbody");
-        let html = "";
-        listaProveedores.forEach((elemento, index) => {
-            html += `<tr>
-                        <td>${elemento.Nombre}</td>
-                        <td>${elemento.Direccion}</td>
-                        <td>${elemento.Correo}</td>
-                        <td>${elemento.Contacto}</td>
-                        <td>${elemento.TipoDeProducto}</td>
-                        <td>${elemento.Pago}</td>
-                        <td>${elemento.EstadoProveedor}</td>
-                        <td nowrap>
-                            <button class="button button--tabla btn--editar" onclick="editarDato(${index})">Editar</button>
-                            <button class="button button--tabla" onclick="eliminarDato(${index})">Eliminar</button>
-                        </td>
-                    </tr>`;
-        });
-        tbody.innerHTML = html; // Reemplaza el contenido del tbody con el nuevo HTML
+                tbody.innerHTML = html; // Reemplaza el contenido del tbody con el nuevo HTML
 
-        // Aquí seleccionamos los botones de editar después de que se hayan cargado en el DOM
-        const btnEditarProveedor = document.querySelectorAll(".btn--editar");
-        btnEditarProveedor.forEach(btn => {
-            btn.addEventListener("click", () => {
-                modalEditar.classList.toggle("modal--view");
-            })
+                // Aquí seleccionamos los botones de editar después de que se hayan cargado en el DOM
+                const btnEditarProveedor = document.querySelectorAll(".btn--editar");
+                btnEditarProveedor.forEach(btn => {
+                    btn.addEventListener("click", () => {
+                        modalEditar.classList.toggle("modal--view");
+                    })
+                });
+
+            }else {
+                // Manejar el caso donde no hay datos
+                const tbody = document.querySelector("#data tbody");
+                tbody.innerHTML = '<tr><td colspan="7">No se encontraron productos</td></tr>';
+            }
+        })
+        .catch(error => {
+            console.error('Error en la solicitud Axios:', error);
         });
     }
-    cargarDatos();
+    
 
     window.eliminarDato = function(index) {
-        let listaProveedores = localStorage.getItem("listaProveedores") ? JSON.parse(localStorage.getItem("listaProveedores")) : [];
-        listaProveedores.splice(index, 1);
-        localStorage.setItem("listaProveedores", JSON.stringify(listaProveedores));
-        cargarDatos();
+        axios.delete(`../php/proveedores.php?id=${index}`)
+        .then(response => {
+            console.log(response.data); // Manejar la respuesta si es necesario
+            cargarDatos(); // Volver a cargar los datos después de eliminar el producto
+        })
+        .catch(error => {
+            console.error('Error en la solicitud Axios:', error);
+            alert("Error al eliminar producto. Por favor, intenta nuevamente.");
+        });
     }
 
     window.editarDato = function(index){
-        
-        let listaProveedores = localStorage.getItem("listaProveedores") ? JSON.parse(localStorage.getItem("listaProveedores")) : [];
-        
-        var objProveedor = listaProveedores[index];
-        const Nombre = document.getElementById("editNombre");
-        const Direccion = document.getElementById("editDireccion");
-        const Correo = document.getElementById("editCorreo");
-        const Contacto = document.getElementById("editContacto");
-        const TipoDeProducto = document.getElementById("editTipoProductos");
-        const Pago = document.getElementById("editFpago");
-        const EstadoProveedor = document.getElementById("editEstado");
-
-        Nombre.value = objProveedor.Nombre;
-        Direccion.value = objProveedor.Direccion;
-        Correo.value = objProveedor.Correo;
-        Contacto.value = objProveedor.Contacto;
-        TipoDeProducto.value = objProveedor.TipoDeProducto;
-        Pago.value = objProveedor.Pago;
-        EstadoProveedor.value = objProveedor.EstadoProveedor;
-
         indice = index;
+        axios.get(`../php/proveedores.php?id=${index}`)
+
+        .then(response => {
+            const datos = response.data;
+
+            var objProveedor = datos[0];
+            const Nombre = document.getElementById("editNombre");
+            const Direccion = document.getElementById("editDireccion");
+            const Correo = document.getElementById("editCorreo");
+            const Contacto = document.getElementById("editContacto");
+            const TipoDeProducto = document.getElementById("editTipoProductos");
+            const Pago = document.getElementById("editFpago");
+            const EstadoProveedor = document.getElementById("editEstado");
+
+            Nombre.value = objProveedor.Nombre;
+            Direccion.value = objProveedor.Direccion;
+            Correo.value = objProveedor.Email;
+            Contacto.value = objProveedor.ContactoPrincipal;
+            TipoDeProducto.value = objProveedor.TipoDeProductos;
+            Pago.value = objProveedor.FormaPago;
+            EstadoProveedor.value = objProveedor.Estado;
+        
+        })
+        .catch(error => {
+            console.error('Error en la solicitud Axios:', error);
+            alert("Error al eliminar producto. Por favor, intenta nuevamente.");
+        });
+        
     }
+    const btnActualizar = document.getElementById("btn--actualizar--dato");
+
+    btnActualizar.addEventListener("click", actulizar);
+
+    function actulizar(){
+        
+        const Nombre = document.getElementById("editNombre").value;
+        const Direccion = document.getElementById("editDireccion").value;
+        const Correo = document.getElementById("editCorreo").value;
+        const Contacto = document.getElementById("editContacto").value;
+        const TipoDeProducto = document.getElementById("editTipoProductos").value;
+        const Pago = document.getElementById("editFpago").value;
+        const EstadoProveedor = document.getElementById("editEstado").value;
+
+        const nuevoProveedor={
+            id:indice,
+            Nombre: Nombre,
+            Direccion: Direccion,
+            Correo: Correo,
+            Contacto: Contacto,
+            TipoDeProducto: TipoDeProducto,
+            Pago: Pago,
+            EstadoProveedor: EstadoProveedor
+        };
+
+        axios.put("../php/proveedores.php", nuevoProveedor)
+        .then(response => {
+            console.log(response.data); // Manejar la respuesta si es necesario
+            cargarDatos(); // Volver a cargar los datos después de agregar el producto
+            
+        })
+        .catch(error => {
+            console.error('Error en la solicitud Axios:', error);
+            alert("Error al agregar producto. Por favor, intenta nuevamente.");
+        });
+    }
+    const inputNombre = document.getElementById("inputNombrePro");
+    const inputProducto = document.getElementById("inputProducto");
+    const inputEstado = document.getElementById("inputEstado");
+
+    inputNombre.addEventListener("input", () => {
+        const inputNombreValor = inputNombre.value;
+        filtradoNombre(inputNombreValor, "nombre");
+    });
+
+    inputProducto.addEventListener("input", () => {
+        const inputCategoriaValor = inputProducto.value;
+        filtradoNombre(inputCategoriaValor, "producto");
+    });
+
+    inputEstado.addEventListener("input", () => {
+        const inputProveedorValor = inputEstado.value;
+        filtradoNombre(inputProveedorValor, "estado");
+    });
+
+    function eliminarAcentos(texto) {
+        return texto.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+    };
+
+    function filtradoNombre(valor, tipo) {
+        axios.get("../php/proveedores.php")
+        .then(response => {
+            const listaProveedores = response.data;
+
+            if (tipo === "nombre") {
+                listaFiltrada = listaProveedores.filter(elemento => eliminarAcentos(elemento.Nombre.toUpperCase()).includes(eliminarAcentos(valor.toUpperCase())));
+            } else if (tipo === "producto") {
+                listaFiltrada = listaProveedores.filter(elemento => eliminarAcentos(elemento.TipoProductos.toUpperCase()).includes(eliminarAcentos(valor.toUpperCase())));
+            } else if (tipo === "estado") {
+                listaFiltrada = listaProveedores.filter(elemento => eliminarAcentos(elemento.Estado.toUpperCase()).includes(eliminarAcentos(valor.toUpperCase())));
+            }
+    
+            const tbody = document.querySelector("#data tbody");
+            let html = "";
+            listaFiltrada.forEach((elemento) => {
+                html += `<tr>
+                                <td>${elemento.Nombre}</td>
+                                <td>${elemento.Direccion}</td>
+                                <td>${elemento.Email}</td>
+                                <td>${elemento.ContactoPrincipal}</td>
+                                <td>${elemento.TipoProductos}</td>
+                                <td>${elemento.FormaPago}</td>
+                                <td>${elemento.Estado}</td>
+                                <td nowrap>
+                                    <button class="button button--tabla btn--editar" onclick="editarDato(${elemento.id})">Editar</button>
+                                    <button class="button button--tabla" onclick="eliminarDato(${elemento.id})">Eliminar</button>
+                                </td>
+                            </tr>`;
+            });
+            tbody.innerHTML = html; // Reemplaza el contenido del tbody con el nuevo HTML
+        
+
+        })
+        .catch(error => {
+            console.error('Error en la solicitud Axios:', error);
+        });
+
+
+
+        }
+
+
+    
+    cargarDatos();
 })

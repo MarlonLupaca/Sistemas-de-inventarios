@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="../css/styleProducto.css">
     <link rel="stylesheet" href="../css/styleStock.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
 </head>
 <body>
     <!--cabecera-->
@@ -85,113 +87,13 @@
             <div class="contenedor--objetos ">
                 <h3>Stocks</h3>
                 <!--Campos de búsqueda.-->
-                <div class = "inputs">
+                <div class="search-container inputs">
                     <h4>- Buscadores -</h4>
-                    <input type  = "text" class = "buscar--input--ID" placeholder="Buscar por ID">
-                    <input type  = "text" class = "buscar--input--producto" placeholder="Buscar por producto">
-                    <input type  = "text" class = "buscar--input--comprobante" placeholder="Buscar por comprobante">
+                    <input type="text" class="buscar--input--ID" placeholder="Buscar por ID">
+                    <input type="text" class="buscar--input--comprobante" placeholder="Buscar por Porveedor">
+                    <input type="text" class="buscar--input--producto" placeholder="Buscar por Producto">
                 </div>
-
-                <div class="alerta">
-                    <div class = "card--stock">
-                        <div class="card--cabecera">ID: 10</div>
-                        <p>Producto: <span>Celular</span></p>
-                        <p>Comprobante: <span>001</span></p>
-                        <p>Stock: <span>100</span></p>
-                        <p>Fecha: <span>07/08/2002</span></p>
-                    </div>
-                    <div class = "card--stock">
-                        <div class="card--cabecera">ID: 20</div>
-                        <p>Producto: <span>Celular</span></p>
-                        <p>Comprobante: <span>002</span></p>
-                        <p>Stock: <span>100</span></p>
-                        <p>Fecha: <span>07/08/2002</span></p>
-                    </div>
-                    <div class = "card--stock">
-                        <div class="card--cabecera">ID: 22</div>
-                        <p>Producto: <span>Cámara</span></p>
-                        <p>Comprobante: <span>001</span></p>
-                        <p>Stock: <span>100</span></p>
-                        <p>Fecha: <span>07/08/2002</span></p>
-                    </div>
-                    <div class = "card--stock">
-                        <div class="card--cabecera">ID: 30</div>
-                        <p>Producto: <span>Cámara</span></p>
-                        <p>Comprobante: <span>002</span></p>
-                        <p>Stock: <span>100</span></p>
-                        <p>Fecha: <span>07/08/2002</span></p>
-                    </div>
-                    <div class = "card--stock">
-                        <div class="card--cabecera">ID: 40</div>
-                        <p>Producto: <span>Laptop</span></p>
-                        <p>Comprobante: <span>001</span></p>
-                        <p>Stock: <span>100</span></p>
-                        <p>Fecha: <span>07/08/2002</span></p>
-                    </div>
-                    <div class = "card--stock">
-                        <div class="card--cabecera">ID: 50</div>
-                        <p>Producto: <span>Laptop</span></p>
-                        <p>Comprobante: <span>002</span></p>
-                        <p>Stock: <span>100</span></p>
-                        <p>Fecha: <span>07/08/2002</span></p>
-                    </div>
-                    <div class = "card--stock">
-                        <div class="card--cabecera">ID: 60</div>
-                        <p>Producto: <span>Pantalla</span></p>
-                        <p>Comprobante: <span>001</span></p>
-                        <p>Stock: <span>100</span></p>
-                        <p>Fecha: <span>07/08/2002</span></p>
-                    </div>
-                    <div class = "card--stock">
-                        <div class="card--cabecera">ID: 70</div>
-                        <p>Producto: <span>Pantalla</span></p>
-                        <p>Comprobante: <span>002</span></p>
-                        <p>Stock: <span>100</span></p>
-                        <p>Fecha: <span>07/08/2002</span></p>
-                    </div>
-                    <div class = "card--stock">
-                        <div class="card--cabecera">ID: 80</div>
-                        <p>Producto: <span>Router Cisco</span></p>
-                        <p>Comprobante: <span>001</span></p>
-                        <p>Stock: <span>100</span></p>
-                        <p>Fecha: <span>07/08/2002</span></p>
-                    </div>
-                    <div class = "card--stock">
-                        <div class="card--cabecera">ID: 90</div>
-                        <p>Producto: <span>Router Cisco</span></p>
-                        <p>Comprobante: <span>002</span></p>
-                        <p>Stock: <span>100</span></p>
-                        <p>Fecha: <span>07/08/2002</span></p>
-                    </div>
-                    <div class = "card--stock">
-                        <div class="card--cabecera">ID: 100</div>
-                        <p>Producto: <span>Adaptador</span></p>
-                        <p>Comprobante: <span>001</span></p>
-                        <p>Stock: <span>100</span></p>
-                        <p>Fecha: <span>07/08/2002</span></p>
-                    </div>
-                    <div class = "card--stock">
-                        <div class="card--cabecera">ID: 110</div>
-                        <p>Producto: <span>Adaptador</span></p>
-                        <p>Comprobante: <span>002</span></p>
-                        <p>Stock: <span>100</span></p>
-                        <p>Fecha: <span>07/08/2002</span></p>
-                    </div>
-                    <div class = "card--stock">
-                        <div class="card--cabecera">ID: 120</div>
-                        <p>Producto: <span>SSD</span></p>
-                        <p>Comprobante: <span>001</span></p>
-                        <p>Stock: <span>100</span></p>
-                        <p>Fecha: <span>07/08/2002</span></p>
-                    </div>
-                    <div class = "card--stock">
-                        <div class="card--cabecera">ID: 130</div>
-                        <p>Producto: <span>SSD</span></p>
-                        <p>Comprobante: <span>002</span></p>
-                        <p>Stock: <span>100</span></p>
-                        <p>Fecha: <span>07/08/2002</span></p>
-                    </div>
-                </div>
+                <div class="cards-container alerta"></div>
             </div>
         </div>
     

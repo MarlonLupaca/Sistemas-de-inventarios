@@ -17,12 +17,10 @@ $method = $_SERVER['REQUEST_METHOD'];
         case 'GET':
             if (isset($_GET['id'])) {
                 $id = $conn->real_escape_string($_GET['id']);
-                $sql = "SELECT * FROM productos WHERE id = $id";
-            } else if(isset($_GET['alertas'])){
-                $sql = "SELECT * FROM productos WHERE stocks < min_aviso;";
+                $sql = "SELECT * FROM empleados WHERE id = $id";
             } else {
-                $sql = "SELECT * FROM productos";
-            }
+                $sql = "SELECT * FROM empleados";
+            } 
 
             $result = $conn->query($sql);
 
@@ -35,7 +33,7 @@ $method = $_SERVER['REQUEST_METHOD'];
                     header('Content-Type: application/json');
                     echo json_encode($productos);
                 } else {
-                    echo "No se encontraron productos";
+                    echo "No se encontraron proveedores";
                 }
             } else {
                 echo "Error en la consulta: " . $conn->error;
@@ -47,15 +45,13 @@ $method = $_SERVER['REQUEST_METHOD'];
             $data = json_decode(file_get_contents("php://input"), true);
     
             if (!empty($data)) {
-                $categoria = $conn->real_escape_string($data['categoria']);
-                $producto = $conn->real_escape_string($data['producto']);
-                $proveedor = $conn->real_escape_string($data['proveedor']);
-                $stocks = $conn->real_escape_string($data['stocks']);
-                $min_aviso = $conn->real_escape_string($data['min_aviso']);
-                $p_compra = $conn->real_escape_string($data['p_compra']);
-                $p_venta = $conn->real_escape_string($data['p_venta']);
-    
-                $sql = "INSERT INTO productos (categoria, producto, proveedor, stocks, min_aviso, p_compra, p_venta) VALUES ('$categoria', '$producto', '$proveedor', '$stocks', '$min_aviso', '$p_compra', '$p_venta')";
+                $nombre = $conn->real_escape_string($data['nombre']);
+                $correo = $conn->real_escape_string($data['correo_electronico']);
+                $telefono = $conn->real_escape_string($data['telefono']);
+                $cargo = $conn->real_escape_string($data['cargo']);
+        
+                // Consulta SQL para insertar el nuevo proveedor
+                $sql = "INSERT INTO empleados (nombre, correo_electronico, telefono, cargo) VALUES ('$nombre', '$correo', '$telefono', '$cargo')";
                 if ($conn->query($sql) === TRUE) {
                     echo "Nuevo registro creado correctamente";
                 } else {
@@ -70,16 +66,16 @@ $method = $_SERVER['REQUEST_METHOD'];
             // Operación de Actualizar (Update)
             $data = json_decode(file_get_contents("php://input"), true);
             if (!empty($data) && isset($data['id'])) {
+                
                 $id = $conn->real_escape_string($data['id']);
-                $categoria = isset($data['categoria']) ? $conn->real_escape_string($data['categoria']) : '';
-                $producto = isset($data['producto']) ? $conn->real_escape_string($data['producto']) : '';
-                $proveedor = isset($data['proveedor']) ? $conn->real_escape_string($data['proveedor']) : '';
-                $stocks = isset($data['stocks']) ? $conn->real_escape_string($data['stocks']) : 0;
-                $min_aviso = isset($data['min_aviso']) ? $conn->real_escape_string($data['min_aviso']) : '';
-                $p_compra = isset($data['p_compra']) ? $conn->real_escape_string($data['p_compra']) : '';
-                $p_venta = isset($data['p_venta']) ? $conn->real_escape_string($data['p_venta']) : '';
+                $nombre = isset($data['nombre']) ? $conn->real_escape_string($data['nombre']) : '';
+                $correo = isset($data['correo_electronico']) ? $conn->real_escape_string($data['correo_electronico']) : '';
+                $telefono = isset($data['telefono']) ? $conn->real_escape_string($data['telefono']) : '';
+                $cargo = isset($data['cargo']) ? $conn->real_escape_string($data['cargo']) : '';
 
-                $sql = "UPDATE productos SET categoria='$categoria', producto='$producto', proveedor='$proveedor', stocks='$stocks', min_aviso='$min_aviso', p_compra='$p_compra', p_venta='$p_venta' WHERE id=$id";
+                $sql = "UPDATE empleados SET nombre='$nombre', correo_electronico='$correo', telefono='$telefono', cargo='$cargo' WHERE id=$id";
+                
+                
                 if ($conn->query($sql) === TRUE) {
                     echo "Registro actualizado correctamente";
                 } else {
@@ -93,7 +89,7 @@ $method = $_SERVER['REQUEST_METHOD'];
         case 'DELETE':
             // Operación de Eliminar (Delete)
             $id = intval($_GET['id']);
-            $sql = "DELETE FROM productos WHERE id=$id";
+            $sql = "DELETE FROM empleados WHERE id=$id";
             if ($conn->query($sql) === TRUE) {
                 echo "Registro eliminado correctamente";
             } else {

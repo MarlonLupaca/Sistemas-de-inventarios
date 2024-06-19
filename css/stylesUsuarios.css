@@ -40,6 +40,7 @@
 }
 
 .button{
+    font-size: 13px;
     height: 2rem;
     margin-left: 2.5rem;
     background-color: var(--color-principal);
@@ -60,6 +61,7 @@
 }
 
 .contenido--de--empleados input{
+    font-size: 13px;
     border: 2px solid var(--color-gris);
     margin: auto;
     padding: 0.3rem 1rem;
