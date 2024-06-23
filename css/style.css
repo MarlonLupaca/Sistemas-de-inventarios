@@ -2,8 +2,9 @@
 :root {
     --color-principal: #1f2d3d;
     --color-secundario: #D65db1;
-    --color-gris: #b0b0b0;
+    --color-gris: #DBDEE3;
 }
+
 *{
     margin: 0;
     padding: 0;
@@ -13,7 +14,7 @@
     font-family: "Poppins", sans-serif;
 }
 body{
-    height: 92vh;
+    height: 100vh;
     overflow: hidden;
 }
 
@@ -228,6 +229,7 @@ body{
     margin-left: 4.6rem;
 }
 .contenedor--objetos{
+    scrollbar-gutter: stable;
     padding: 0 2.5rem;
     padding-top: 0;
     height: 100%;
@@ -531,4 +533,17 @@ h3{
     width: 40%;
     justify-self: right;
     margin: 1rem;
+}
+.color_agregado {
+    background-color: var(--color-principal) !important;
+}
+.fuente_comun{
+    font-size: 25px;
+    padding: 0;
+    margin: 18px 0px 0px 0;
+    font-weight: 300;
+}
+.needs-validation input:focus {
+    box-shadow: none;
+    border: 2px solid var(--color-principal);
 }

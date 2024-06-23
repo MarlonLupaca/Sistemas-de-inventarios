@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Inventario</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/stylesEmpleados.css">
     <link rel="stylesheet" href="../css/styleProducto.css">
+    <link rel="stylesheet" href="../css/alertas.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
 </head>
 <body>
+    <div class="alerta_contenedor"></div>
     <!--cabecera-->
     <header class="contenedor--cabecera">
         <div class="contenedor--cabecera--contenido">
@@ -85,9 +85,10 @@
         </nav>
         <!--Fin del menu-->
         <!--contenido principal-->
+        
         <div class="contenido--principal">
             <div class="contenedor--objetos">
-                <h3>Productos</h3>
+                <h3 class="fuente_comun">Productos</h3>
 
                 <div class="contenido--de--empleados espaciado">
                     <div>
@@ -122,7 +123,7 @@
         <section class="modal">
             <div class="contenedor--modal modal--producto">
                 <h2>Agregar nuevo producto</h2>
-                <form class="needs-validation" novalidate>
+                <form class="needs-validation aux" novalidate id="formulario_agregar">
                     <div>
                         <i class="fa-solid fa-folder-tree"></i>
                         <input type="text"  class="form-control" placeholder="Categoria" id="inputCategoria" required>
@@ -189,10 +190,11 @@
                 </form>
             </div>
         </section>
-    
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../javascript/vali.js"></script>
     <script src="../javascript/script.js"></script>
     <script src="../javascript/scripProductos.js"></script>
-
+    <script src="../javascript/alertas.js"></script>
 </body>
 </html>

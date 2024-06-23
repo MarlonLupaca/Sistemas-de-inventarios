@@ -78,14 +78,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 .then(response => {
                     console.log(response.data); // Manejar la respuesta si es necesario
                     cargarDatos(); // Volver a cargar los datos después de agregar el proveedor
+                    alertaBuena();
+                    btnEscoderNewProveedor.click();
                 })
                 .catch(error => {
                     console.error('Error en la solicitud Axios:', error);
                     alert("Error al agregar proveedor. Por favor, intenta nuevamente.");
                 });
+            
         } else {
-            // Manejo de la validación fallida (puedes mostrar un mensaje de error o realizar alguna acción)
-            alert("Por favor completa todos los campos correctamente.");
         }
     }
     

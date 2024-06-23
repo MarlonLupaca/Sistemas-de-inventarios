@@ -2,7 +2,7 @@
 :root {
     --color-principal: #1f2d3d;
     --color-secundario: #D65db1;
-    --color-gris: #b0b0b0;
+    --color-gris: #DBDEE3;
 
 }
 *{
@@ -75,7 +75,7 @@
     display: flex;
 }
 .empleados--tabla{
-    
+    width: 95%;
     border-collapse: collapse;
     margin: auto;
     margin-top: 2rem;

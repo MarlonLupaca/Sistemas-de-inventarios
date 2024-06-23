@@ -1,7 +1,6 @@
 
 document.addEventListener("DOMContentLoaded", () => {
     
-    
     // Obtener referencias a los elementos del DOM
     const inputCategoria = document.getElementById("inputCategoria");
     const inputProducto = document.getElementById("inputProducto");
@@ -30,7 +29,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     btnCerrarModal.addEventListener("click", () => {
+        
         modal.classList.toggle("modal--view");
+
+
     });
 
     btnOcultarModal.addEventListener("click", () => {
@@ -126,23 +128,50 @@ document.addEventListener("DOMContentLoaded", () => {
                     console.error('Error en la solicitud Axios:', error);
                     alert("Error al agregar producto. Por favor, intenta nuevamente.");
                 });
+
+            alertaBuena();
+            btnCerrarModal.click();
+
+
         } else {
         }
     }
 
 
+
+
     // Función para eliminar un producto
     window.eliminarDato = function(index) {
-        
-        axios.delete(`../php/productos.php?id=${index}`)
-        .then(response => {
-            console.log(response.data); // Manejar la respuesta si es necesario
-            cargarDatos(); // Volver a cargar los datos después de eliminar el producto
-        })
-        .catch(error => {
-            console.error('Error en la solicitud Axios:', error);
-            alert("Error al eliminar producto. Por favor, intenta nuevamente.");
+        Swal.fire({
+            title: "Seguro que quieres eliminar el dato?",
+            showDenyButton: true,
+            heightAuto: false, 
+            confirmButtonText: "Si",
+            denyButtonText: "No",
+            customClass: {
+                confirmButton: 'color_agregado',
+                denyButton: 'color_agregado',
+            }
+        }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+                alertaBuena();
+                axios.delete(`../php/productos.php?id=${index}`)
+                .then(response => {
+                    console.log(response.data); // Manejar la respuesta si es necesario
+                    cargarDatos(); // Volver a cargar los datos después de eliminar el producto
+                })
+                .catch(error => {
+                    console.error('Error en la solicitud Axios:', error);
+                    alert("Error al eliminar producto. Por favor, intenta nuevamente.");
+            });
+
+            } else if (result.isDenied) {
+                alertaMala();
+            }
         });
+
+        
     }
 
     window.editarDato = function(index){
@@ -167,11 +196,14 @@ document.addEventListener("DOMContentLoaded", () => {
             edPreCompras.value = objProducto.p_compra;
             edPreVenta.value = objProducto.p_venta;
 
+            
         })
         .catch(error => {
             console.error('Error en la solicitud Axios:', error);
             alert("Error al eliminar producto. Por favor, intenta nuevamente.");
         });
+
+        
 
         
 
@@ -186,27 +218,32 @@ document.addEventListener("DOMContentLoaded", () => {
         const edminAviso = document.getElementById("editMin").value;
         const edPreCompras = document.getElementById("editCompra").value;
         const edPreVenta = document.getElementById("editVenta").value;
-
-        const actualizarProducto = {
-            id: indice,
-            categoria: edinputCategoria,
-            producto: edinputProducto,
-            proveedor: edinputProveedor,
-            stocks: 0,
-            min_aviso: edminAviso,
-            p_compra: edPreCompras,
-            p_venta: edPreVenta
-        };
-        axios.put("../php/productos.php", actualizarProducto)
-        .then(response => {
-            console.log(response.data); // Manejar la respuesta si es necesario
-            cargarDatos(); // Volver a cargar los datos después de agregar el producto
-            
-        })
-        .catch(error => {
-            console.error('Error en la solicitud Axios:', error);
-            alert("Error al agregar producto. Por favor, intenta nuevamente.");
-        });
+        
+        if (edinputCategoria && edinputProducto && edinputProveedor && edminAviso && edPreCompras && edPreVenta) {
+            const actualizarProducto = {
+                id: indice,
+                categoria: edinputCategoria,
+                producto: edinputProducto,
+                proveedor: edinputProveedor,
+                stocks: 0,
+                min_aviso: edminAviso,
+                p_compra: edPreCompras,
+                p_venta: edPreVenta
+            };
+            axios.put("../php/productos.php", actualizarProducto)
+            .then(response => {
+                console.log(response.data); // Manejar la respuesta si es necesario
+                cargarDatos(); // Volver a cargar los datos después de agregar el producto
+                alertaBuena();
+                btnOcultarModal.click()
+                
+            })
+            .catch(error => {
+                console.error('Error en la solicitud Axios:', error);
+                alert("Error al agregar producto. Por favor, intenta nuevamente.");
+            });
+        }
+        
     }
 
     const inputNombreFilter = document.getElementById("InputNombre");
@@ -264,6 +301,13 @@ document.addEventListener("DOMContentLoaded", () => {
                             </tr>`;
             });
             tbody.innerHTML = html; // Reemplaza el contenido del tbody con el nuevo HTML
+
+            const btnsEditarProducto = document.querySelectorAll(".btn--editar");
+                btnsEditarProducto.forEach(btn => {
+                    btn.addEventListener("click", () => {
+                        modalEditar.classList.toggle("modal--view");
+                    });
+                });
         
 
         })
