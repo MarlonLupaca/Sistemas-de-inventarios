@@ -6,9 +6,13 @@
     <title>Dashboard Inventario</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/stylesEmpleados.css">
-    
     <link rel="stylesheet" href="../css/styleProducto.css">
+    <link rel="stylesheet" href="../css/movimiento.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>    
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
 </head>
 <body>
     <!--cabecera-->
@@ -28,7 +32,7 @@
                 </div>
                 <div>
                     <img src="../imagenes/vendedor.jpg" alt="">
-                    <span class="text">Leonardo Rodriguez</span>
+                    <span class="text" id="nombre_sesion"></span>
                 </div>
                 <li id="Dashboard">
                     <a href="dashboard.html">
@@ -87,279 +91,147 @@
                 <h3 class="fuente_comun">Movimientos</h3>
                 <div class="contenido--de--empleados">
                     <div>
-                        <button class="button" id="btn--new--empleado">Nueva salida +</button>
-                        <button class="button" id="btn--new--entrada">Nueva entrada +</button>
-                    </div>
-                    <div class="inputs">
-                        <input type="text" placeholder="Busqueda por nombre">
-                        <input type="text" placeholder="Busqueda por productos">
-                        <input type="text" placeholder="Busqueda por estado">
+                        <button class="button" id="btn_nuevo_movimiento">Nueva movimiento +</button>
                     </div>
                     <div class="tabla--proveedores--contenedor">
-                        <table class="proveedores--tabla">
+                        <table class="proveedores--tabla" id="data">
                             <thead>
                                 <tr>
-                                    <th>T.Movi.</th>
-                                    <th>Comprobante</th> 
-                                    <th>Fe. y Ho.</th>
-                                    <th>Producto</th>
+                                    <th>ID</th>
+                                    <th>Fecha</th> 
+                                    <th>Hora</th>
+                                    <th>T. Movimiento</th>
                                     <th>Cantidad</th>
                                     <th>Total</th>
-                                    <th>Proveedor</th>
                                     <th>Editar</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Entrada</td>
-                                    <td>A1023</td>
-                                    <td nowrap>07/07/2002 3:07 pm</td>
-                                    <td>Celular Samsung</td>
-                                    <td>30</td>
-                                    <td>S/.30</td>
-                                    <td>Inversiones</td>
-                                    <td nowrap>
-                                        <button class="button button--tabla  ">View</button>
-                                        <button class="button button--tabla btn--editar">Editar</button>
-                                        <button class="button button--tabla">Eliminar</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Entrada</td>
-                                    <td>A1023</td>
-                                    <td nowrap>07/07/2002 3:07 pm</td>
-                                    <td>Celular Samsung</td>
-                                    <td>30</td>
-                                    <td>S/.30</td>
-                                    <td>Inversiones</td>
-                                    <td nowrap>
-                                        <button class="button button--tabla  ">View</button>
-                                        <button class="button button--tabla btn--editar">Editar</button>
-                                        <button class="button button--tabla">Eliminar</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Entrada</td>
-                                    <td>A1023</td>
-                                    <td nowrap>07/07/2002 3:07 pm</td>
-                                    <td>Celular Samsung</td>
-                                    <td>30</td>
-                                    <td>S/.30</td>
-                                    <td>Inversiones</td>
-                                    <td nowrap>
-                                        <button class="button button--tabla  ">View</button>
-                                        <button class="button button--tabla btn--editar">Editar</button>
-                                        <button class="button button--tabla">Eliminar</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Entrada</td>
-                                    <td>A1023</td>
-                                    <td nowrap>07/07/2002 3:07 pm</td>
-                                    <td>Celular Samsung</td>
-                                    <td>30</td>
-                                    <td>S/.30</td>
-                                    <td>Inversiones</td>
-                                    <td nowrap>
-                                        <button class="button button--tabla  ">View</button>
-                                        <button class="button button--tabla btn--editar">Editar</button>
-                                        <button class="button button--tabla">Eliminar</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Entrada</td>
-                                    <td>A1023</td>
-                                    <td nowrap>07/07/2002 3:07 pm</td>
-                                    <td>Celular Samsung</td>
-                                    <td>30</td>
-                                    <td>S/.30</td>
-                                    <td>Inversiones</td>
-                                    <td nowrap>
-                                        <button class="button button--tabla  ">View</button>
-                                        <button class="button button--tabla btn--editar">Editar</button>
-                                        <button class="button button--tabla">Eliminar</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Entrada</td>
-                                    <td>A1023</td>
-                                    <td nowrap>07/07/2002 3:07 pm</td>
-                                    <td>Celular Samsung</td>
-                                    <td>30</td>
-                                    <td>S/.30</td>
-                                    <td>Inversiones</td>
-                                    <td nowrap>
-                                        <button class="button button--tabla  ">View</button>
-                                        <button class="button button--tabla btn--editar">Editar</button>
-                                        <button class="button button--tabla">Eliminar</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Entrada</td>
-                                    <td>A1023</td>
-                                    <td nowrap>07/07/2002 3:07 pm</td>
-                                    <td>Celular Samsung</td>
-                                    <td>30</td>
-                                    <td>S/.30</td>
-                                    <td>Inversiones</td>
-                                    <td nowrap>
-                                        <button class="button button--tabla  ">View</button>
-                                        <button class="button button--tabla btn--editar">Editar</button>
-                                        <button class="button button--tabla">Eliminar</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Entrada</td>
-                                    <td>A1023</td>
-                                    <td nowrap>07/07/2002 3:07 pm</td>
-                                    <td>Celular Samsung</td>
-                                    <td>30</td>
-                                    <td>S/.30</td>
-                                    <td>Inversiones</td>
-                                    <td nowrap>
-                                        <button class="button button--tabla  ">View</button>
-                                        <button class="button button--tabla btn--editar">Editar</button>
-                                        <button class="button button--tabla">Eliminar</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Entrada</td>
-                                    <td>A1023</td>
-                                    <td nowrap>07/07/2002 3:07 pm</td>
-                                    <td>Celular Samsung</td>
-                                    <td>30</td>
-                                    <td>S/.30</td>
-                                    <td>Inversiones</td>
-                                    <td nowrap>
-                                        <button class="button button--tabla  ">View</button>
-                                        <button class="button button--tabla btn--editar">Editar</button>
-                                        <button class="button button--tabla">Eliminar</button>
-                                    </td>
-                                </tr>
+
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
-        <section class="modal">
+        <section class="modal modal_nuevo_movimiento">
             <div class="contenedor--modal modal--producto modal--movimiento">
-                <h2>Nueva salida de producto</h2>
-                <form>
+                <h2>Nueva movimiento</h2>
+                <form class="formulario_movimiento">
                     <div>
-                        <i class="fa-solid fa-folder-tree"></i>
-                        <input type="text" placeholder="Tipo de Movimiento">
+                        <i class="fa-solid fa-truck"></i>
+                        <select name="movimiento" id="tipo_movimiento" class="jc">
+                            <option value="Salida">Salida</option>
+                            <option value="Entrada">Entrada</option>
+                        </select>
+                    </div>
+                    <div></div>
+                    <div>
+                        <i class="fa-solid fa-calendar-days"></i>
+                        <p>Fecha: <time id="currentDate"></time></p>
                     </div>
                     <div>
-                        <i class="fa-solid fa-shapes"></i>
-                        <input type="email" placeholder="Comprobante">
+                        <i class="fa-solid fa-clock"></i>
+                        <p>Hora: <time id="currentTime"></time></p>
+                    </div>
+                    <div class="contenedor_buscar_producto">
+                        <div>
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <input type="text" id="buscador" autocomplete="off">
+                        </div>
+                        
+                        <div class="contenedor_sugerencias">
+                            <ul id="lista_sugerencias" class="estilos_sugerencias">
+                                
+                            </ul>
+                        </div>
                     </div>
                     <div>
-                        <i class="fa-solid fa-clipboard-user"></i>
-                        <input type="text" placeholder="Fecha y Hora">
-                    </div>
-                    <div>
-                        <i class="fa-solid fa-sheet-plastic"></i>
-                        <input type="text" placeholder="Producto">
-                    </div>
-                    <div>
-                        <i class="fa-solid fa-box-open"></i>
-                        <input type="text" placeholder="Cantidad">
-                    </div>
-                    <div>
-                        <i class="fa-solid fa-shapes"></i>
-                        <input type="text" placeholder="Total">
-                    </div>
-                    <div>
-                        <i class="fa-solid fa-sack-dollar"></i>
-                        <input type="text" placeholder="Proveedores">
+                        <p>Cant.</p>
+                        <input type="number" id="cantidad_productos" min="0">
                     </div>
                     <div class="contenedor--botones">
-                        <button type="button" class="button button--form">Guardar</button>
-                        <button type="button"  class="button button--form button--form--cancelar" id="btn--esconder--new--empleado">Cancelar</button>
+                        <button type="button" class="button button--form" id="btn_guardar_movimiento">Guardar</button>
+                        <button type="button"  class="button button--form button--form--cancelar" id="cancelar_nuevo_movimiento">Cancelar</button>
                     </div>
+                    <div class="contenerdor_carrito">
+                        <button type="button" class="carrito" id="btn_carrito">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                        </button>
+                    </div>
+                    <div class="contenedor_tabla">
+                        <table class="tabla_detalle" id="detalle">
+                            <thead>
+                                <tr>
+                                    <th>Producto</th>
+                                    <th>Cantidad</th> 
+                                    <th>Precio Uni.</th>
+                                    <th>Subtotal</th>
+                                    <th>Editar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+
+
                 </form>
             </div>
         </section>
-        <section class="modal modal--salida">
+
+
+
+        <section class="modal modal_view_movimiento">
             <div class="contenedor--modal modal--producto modal--movimiento">
-                <h2>Nueva entrada de producto</h2>
-                <form>
-                    <div>
-                        <i class="fa-solid fa-folder-tree"></i>
-                        <input type="text" placeholder="Tipo de Movimiento">
+                <h2>Nueva movimiento</h2>
+                <form class="formulario_movimiento">
+                    <div id="contenedor_id">
+                        <i class="fa-solid fa-id-card"></i>
+                        <p> ID:  <span id="id_movimiento"></span></p>
                     </div>
                     <div>
-                        <i class="fa-solid fa-shapes"></i>
-                        <input type="email" placeholder="Comprobante">
+                        <i class="fa-solid fa-truck"></i>
+                        <select name="movimiento" id="jc_tipo" class="jc">
+                            <option value="Salida">Salida</option>
+                            <option value="Entrada">Entrada</option>
+                        </select>
                     </div>
-                    <div>
-                        <i class="fa-solid fa-clipboard-user"></i>
-                        <input type="text" placeholder="Fecha y Hora">
+                    <div></div>
+                    <div class="contenedor_fecha">
+                        <i class="fa-solid fa-calendar-days"></i>
+                        <p>Fecha: <time id="fecha"></time></p>
                     </div>
-                    <div>
-                        <i class="fa-solid fa-sheet-plastic"></i>
-                        <input type="text" placeholder="Producto">
-                    </div>
-                    <div>
-                        <i class="fa-solid fa-box-open"></i>
-                        <input type="text" placeholder="Cantidad">
-                    </div>
-                    <div>
-                        <i class="fa-solid fa-shapes"></i>
-                        <input type="text" placeholder="Total">
-                    </div>
-                    <div>
-                        <i class="fa-solid fa-sack-dollar"></i>
-                        <input type="text" placeholder="Proveedores">
+                    <div class="contenedor_hora">
+                        <i class="fa-solid fa-clock"></i>
+                        <p>Hora: <time id="hora"></time></p>
                     </div>
                     <div class="contenedor--botones">
-                        <button type="button" class="button button--form">Guardar</button>
-                        <button type="button"  class="button button--form button--form--cancelar" id="btn--esconder--entrada">Cancelar</button>
+                        <button type="button" class="button button--form" id="">Guardar</button>
+                        <button type="button"  class="button button--form button--form--cancelar" id="btn_cancelar_view">Cancelar</button>
                     </div>
-                </form>
-            </div>
-        </section>
-        <section class="modal--editar">
-            <div class="contenedor--modal modal--producto modal--movimiento">
-                <h2>Editar movimiento</h2>
-                <form>
-                    <div>
-                        <i class="fa-solid fa-folder-tree"></i>
-                        <input type="text" placeholder="Tipo de Movimiento">
+                    <div class="contenedor_tabla">
+                        <table class="tabla_detalle" id="tabla_detalle_view">
+                            <thead>
+                                <tr>
+                                    <th>Producto</th>
+                                    <th>Cantidad</th> 
+                                    <th>Precio Uni.</th>
+                                    <th>Subtotal</th>
+                                    <th>Editar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
                     </div>
-                    <div>
-                        <i class="fa-solid fa-shapes"></i>
-                        <input type="email" placeholder="Comprobante">
-                    </div>
-                    <div>
-                        <i class="fa-solid fa-clipboard-user"></i>
-                        <input type="text" placeholder="Fecha y Hora">
-                    </div>
-                    <div>
-                        <i class="fa-solid fa-sheet-plastic"></i>
-                        <input type="text" placeholder="Producto">
-                    </div>
-                    <div>
-                        <i class="fa-solid fa-box-open"></i>
-                        <input type="text" placeholder="Cantidad">
-                    </div>
-                    <div>
-                        <i class="fa-solid fa-shapes"></i>
-                        <input type="text" placeholder="Total">
-                    </div>
-                    <div>
-                        <i class="fa-solid fa-sack-dollar"></i>
-                        <input type="text" placeholder="Proveedores">
-                    </div>
-                    <div class="contenedor--botones">
-                        <button type="button" class="button button--form">Guardar</button>
-                        <button type="button" class="button button--form button--form--cancelar" id="btn--esconder--editar--empleado">Cancelar</button>
-                    </div>
+
+
                 </form>
             </div>
         </section>
     
     <script src="../javascript/script.js"></script>
+    <script src="../javascript/movimientos.js"></script>
 </body>
 </html>

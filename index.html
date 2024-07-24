@@ -6,6 +6,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="css/styleLogin.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
     <div class="contenedor">
@@ -35,19 +36,21 @@
                         </li>
                     </ul>
                     
-                    <form>
+                    <form id="formulario_ingresar">
                         <p >Use su correo y contraseña</p>
                         <div>
                             <i class="fa-solid fa-user dao"></i>
-                            <input type="email" placeholder="Email" >
+                            <input type="text" placeholder="Usuario" id="usuario" class=" input_bordes" >
                         </div>
                         <div>
                             <i class="fa-solid fa-lock dao"></i>
-                            <input type="password" placeholder="Contraseña">
+                            <input type="password" placeholder="Contraseña" id="contrasena" class=" input_bordes"> 
                         </div>
-                        <a href="formularios/dashboard.html"><input type="button" value="Iniciar Sesión" class="button"></a>
+                        <button class="button" id="btn_iniciar" type="button">Iniciar Sesión</button>
                     </form>
+                    
                     </div>
+
                 </div>
             </div>
             <div class="logearse contenedor--registrarse">

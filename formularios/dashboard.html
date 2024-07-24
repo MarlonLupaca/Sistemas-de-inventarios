@@ -6,6 +6,7 @@
     <title>Dashboard Inventario</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
     <!--cabecera-->
@@ -25,7 +26,7 @@
                 </div>
                 <div>
                     <img src="../imagenes/vendedor.jpg" alt="">
-                    <span class="text">Leonardo Rodriguez</span>
+                    <span class="text" id="nombre_sesion"></span>
                 </div>
                 <li id="Dashboard">
                     <a href="dashboard.html" class="activo">
@@ -82,132 +83,14 @@
         <div class="contenido--principal">
             <div class="contenedor--objetos">
                 <h3 class="fuente_comun">Dashboard</h3>
-                <ul>
-                    <li>
-                        <i class="fa-solid fa-server"></i>
-                        <span class="primer--texto">Productos</span>
-                        <span class="segundo--texto">16</span>
-                    </li>
-                    <li>
-                        <i class="fa-brands fa-react"></i>
-                        <span class="primer--texto">Existencias</span>
-                        <span class="segundo--texto">16</span>
-                    </li>
-                    <li>
-                        <i class="fa-brands fa-react"></i>
-                        <span class="primer--texto">Proveedores</span>
-                        <span class="segundo--texto">16</span>
-                    </li>
-                    <li>
-                        <i class="fa-brands fa-react"></i>
-                        <span class="primer--texto">Movimientos</span>
-                        <span class="segundo--texto">16</span>
-                    </li>
-                    <li>
-                        <i class="fa-brands fa-react"></i>
-                        <span class="primer--texto">Empleados</span>
-                        <span class="segundo--texto">16</span>
-                    </li>
-                    <li>
-                        <i class="fa-brands fa-react"></i>
-                        <span class="primer--texto">Usuarios</span>
-                        <span class="segundo--texto">16</span>
-                    </li>
-                    <li>
-                        <i class="fa-brands fa-react"></i>
-                        <span class="primer--texto">Productos</span>
-                        <span class="segundo--texto">16</span>
-                    </li>
-                    <li>
-                        <i class="fa-brands fa-react"></i>
-                        <span class="primer--texto">Productos</span>
-                        <span class="segundo--texto">16</span>
-                    </li>
-                    <li>
-                        <i class="fa-brands fa-react"></i>
-                        <span class="primer--texto">Productos</span>
-                        <span class="segundo--texto">16</span>
-                    </li>
-                    <li>
-                        <i class="fa-brands fa-react"></i>
-                        <span class="primer--texto">Productos</span>
-                        <span class="segundo--texto">16</span>
-                    </li>
-                    <li>
-                        <i class="fa-brands fa-react"></i>
-                        <span class="primer--texto">Productos</span>
-                        <span class="segundo--texto">16</span>
-                    </li>
-                    <li>
-                        <i class="fa-brands fa-react"></i>
-                        <span class="primer--texto">Productos</span>
-                        <span class="segundo--texto">16</span>
-                    </li>
-                    <li>
-                        <i class="fa-brands fa-react"></i>
-                        <span class="primer--texto">Productos</span>
-                        <span class="segundo--texto">16</span>
-                    </li>
-                    <li>
-                        <i class="fa-brands fa-react"></i>
-                        <span class="primer--texto">Productos</span>
-                        <span class="segundo--texto">16</span>
-                    </li>
-                    <li>
-                        <i class="fa-brands fa-react"></i>
-                        <span class="primer--texto">Productos</span>
-                        <span class="segundo--texto">16</span>
-                    </li>
-                    <li>
-                        <i class="fa-brands fa-react"></i>
-                        <span class="primer--texto">Productos</span>
-                        <span class="segundo--texto">16</span>
-                    </li>
-                    <li>
-                        <i class="fa-brands fa-react"></i>
-                        <span class="primer--texto">Productos</span>
-                        <span class="segundo--texto">16</span>
-                    </li>
-                    <li>
-                        <i class="fa-brands fa-react"></i>
-                        <span class="primer--texto">Productos</span>
-                        <span class="segundo--texto">16</span>
-                    </li>
-                    <li>
-                        <i class="fa-brands fa-react"></i>
-                        <span class="primer--texto">Productos</span>
-                        <span class="segundo--texto">16</span>
-                    </li>
-                    <li>
-                        <i class="fa-brands fa-react"></i>
-                        <span class="primer--texto">Productos</span>
-                        <span class="segundo--texto">16</span>
-                    </li>
-                    <li>
-                        <i class="fa-brands fa-react"></i>
-                        <span class="primer--texto">Productos</span>
-                        <span class="segundo--texto">16</span>
-                    </li>
-                    <li>
-                        <i class="fa-brands fa-react"></i>
-                        <span class="primer--texto">Productos</span>
-                        <span class="segundo--texto">16</span>
-                    </li>
-                    <li>
-                        <i class="fa-brands fa-react"></i>
-                        <span class="primer--texto">Productos</span>
-                        <span class="segundo--texto">16</span>
-                    </li>
-                    <li>
-                        <i class="fa-brands fa-react"></i>
-                        <span class="primer--texto">Productos</span>
-                        <span class="segundo--texto">16</span>
-                    </li>
+                <ul id="lista">
+                    
                 </ul>
                 
             </div>
         </div>
     
     <script src="../javascript/script.js"></script>
+    <script src="../javascript/dasboard.js"></script>
 </body>
 </html>

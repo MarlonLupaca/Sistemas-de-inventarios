@@ -139,7 +139,7 @@ tr {
 .contenedor--modal form{
     margin-top: 1.5rem;
     display: flex;
-    flex-direction: column;;
+    flex-direction: column;
 }
 .contenedor--modal form div{
     display: flex;

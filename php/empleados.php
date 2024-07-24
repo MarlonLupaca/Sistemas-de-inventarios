@@ -100,7 +100,7 @@ $method = $_SERVER['REQUEST_METHOD'];
         default:
             echo "Método no soportado";
             break;
-}
+    }
 
 // Cerrar la conexión
 $conn->close();

@@ -113,20 +113,46 @@ document.addEventListener("DOMContentLoaded", () => {
                     console.error('Error en la solicitud Axios:', error);
                     alert("Error al agregar producto. Por favor, intenta nuevamente.");
                 });
+
+                alertaBuena();
+                btnCancelarNuevoUsuario.click();
         } else {
             
         }
     }
     window.eliminarDato = function(index) {
-        axios.delete(`../php/usuarios.php?id=${index}`)
-        .then(response => {
-            console.log(response.data); // Manejar la respuesta si es necesario
-            cargarDatos(); // Volver a cargar los datos después de eliminar el producto
-        })
-        .catch(error => {
-            console.error('Error en la solicitud Axios:', error);
-            alert("Error al eliminar producto. Por favor, intenta nuevamente.");
-        });
+
+        Swal.fire({
+            title: "Seguro que quieres eliminar el dato?",
+            showDenyButton: true,
+            heightAuto: false, 
+            confirmButtonText: "Si",
+            denyButtonText: "No",
+            customClass: {
+                confirmButton: 'color_agregado',
+                denyButton: 'color_agregado',
+            }
+        }).then((result) => {
+            
+
+            if (result.isConfirmed) {
+                alertaBuena();
+                axios.delete(`../php/usuarios.php?id=${index}`)
+                .then(response => {
+                    console.log(response.data); // Manejar la respuesta si es necesario
+                    cargarDatos(); // Volver a cargar los datos después de eliminar el producto
+                })
+                .catch(error => {
+                    console.error('Error en la solicitud Axios:', error);
+                    alert("Error al eliminar producto. Por favor, intenta nuevamente.");
+                });
+            } else if (result.isDenied) {
+                alertaMala();
+            }
+        });  
+
+
+        
     }
     window.editarDato = function(index){
         console.log(index)
@@ -164,25 +190,30 @@ document.addEventListener("DOMContentLoaded", () => {
         const usuario = document.getElementById("edit_Usuario").value;
         const contrasenia = document.getElementById("edit_contrasenia").value;
         const cargo = document.getElementById("edit_rango").value;
-        
-        const nuevoProveedor={
-            id:indice,
-            nombre: Nombre,
-            usuario: usuario,
-            contrasena: contrasenia,
-            cargo: cargo
-        };
 
-        axios.put("../php/usuarios.php", nuevoProveedor)
-        .then(response => {
-            console.log(response.data); // Manejar la respuesta si es necesario
-            cargarDatos(); // Volver a cargar los datos después de agregar el producto
-            
-        })
-        .catch(error => {
-            console.error('Error en la solicitud Axios:', error);
-            alert("Error al agregar producto. Por favor, intenta nuevamente.");
-        });
+        if (Nombre.trim() !== "" && usuario.trim() !== "" && contrasenia.trim() !== "" && cargo.trim() !== ""){
+            const nuevoProveedor={
+                id:indice,
+                nombre: Nombre,
+                usuario: usuario,
+                contrasena: contrasenia,
+                cargo: cargo
+            };
+    
+            axios.put("../php/usuarios.php", nuevoProveedor)
+            .then(response => {
+                console.log(response.data); // Manejar la respuesta si es necesario
+                cargarDatos(); // Volver a cargar los datos después de agregar el producto
+                
+            })
+            .catch(error => {
+                console.error('Error en la solicitud Axios:', error);
+                alert("Error al agregar producto. Por favor, intenta nuevamente.");
+            });
+
+            alertaBuena();
+            btn_Esconder_Actualizar.click();
+        }    
     }
 
     const inputNombre = document.getElementById("input_nombre");

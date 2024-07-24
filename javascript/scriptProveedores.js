@@ -137,15 +137,35 @@ document.addEventListener("DOMContentLoaded", () => {
     
 
     window.eliminarDato = function(index) {
-        axios.delete(`../php/proveedores.php?id=${index}`)
-        .then(response => {
-            console.log(response.data); // Manejar la respuesta si es necesario
-            cargarDatos(); // Volver a cargar los datos después de eliminar el producto
-        })
-        .catch(error => {
-            console.error('Error en la solicitud Axios:', error);
-            alert("Error al eliminar producto. Por favor, intenta nuevamente.");
-        });
+
+        Swal.fire({
+            title: "Seguro que quieres eliminar el dato?",
+            showDenyButton: true,
+            heightAuto: false, 
+            confirmButtonText: "Si",
+            denyButtonText: "No",
+            customClass: {
+                confirmButton: 'color_agregado',
+                denyButton: 'color_agregado',
+            }
+        }).then((result) => {
+            
+
+            if (result.isConfirmed) {
+                alertaBuena();
+                axios.delete(`../php/proveedores.php?id=${index}`)
+                .then(response => {
+                    console.log(response.data); // Manejar la respuesta si es necesario
+                    cargarDatos(); // Volver a cargar los datos después de eliminar el producto
+                })
+                .catch(error => {
+                    console.error('Error en la solicitud Axios:', error);
+                    alert("Error al eliminar producto. Por favor, intenta nuevamente.");
+                });
+            } else if (result.isDenied) {
+                alertaMala();
+            }
+        });    
     }
 
     window.editarDato = function(index){
@@ -171,6 +191,8 @@ document.addEventListener("DOMContentLoaded", () => {
             TipoDeProducto.value = objProveedor.TipoDeProductos;
             Pago.value = objProveedor.FormaPago;
             EstadoProveedor.value = objProveedor.Estado;
+
+            
         
         })
         .catch(error => {
@@ -178,13 +200,14 @@ document.addEventListener("DOMContentLoaded", () => {
             alert("Error al eliminar producto. Por favor, intenta nuevamente.");
         });
         
+        
     }
     const btnActualizar = document.getElementById("btn--actualizar--dato");
 
     btnActualizar.addEventListener("click", actulizar);
 
     function actulizar(){
-        
+
         const Nombre = document.getElementById("editNombre").value;
         const Direccion = document.getElementById("editDireccion").value;
         const Correo = document.getElementById("editCorreo").value;
@@ -193,27 +216,33 @@ document.addEventListener("DOMContentLoaded", () => {
         const Pago = document.getElementById("editFpago").value;
         const EstadoProveedor = document.getElementById("editEstado").value;
 
-        const nuevoProveedor={
-            id:indice,
-            Nombre: Nombre,
-            Direccion: Direccion,
-            Correo: Correo,
-            Contacto: Contacto,
-            TipoDeProducto: TipoDeProducto,
-            Pago: Pago,
-            EstadoProveedor: EstadoProveedor
-        };
-
-        axios.put("../php/proveedores.php", nuevoProveedor)
-        .then(response => {
-            console.log(response.data); // Manejar la respuesta si es necesario
-            cargarDatos(); // Volver a cargar los datos después de agregar el producto
+        if (Nombre.trim() !== "" && Direccion.trim() !== "" && Correo.trim() !== "" && Contacto.trim() !== "" && TipoDeProducto.trim() !== "" && Pago.trim() !== "" && EstadoProveedor.trim() !== ""){
+            const nuevoProveedor={
+                id:indice,
+                Nombre: Nombre,
+                Direccion: Direccion,
+                Correo: Correo,
+                Contacto: Contacto,
+                TipoDeProducto: TipoDeProducto,
+                Pago: Pago,
+                EstadoProveedor: EstadoProveedor
+            };
+    
+            axios.put("../php/proveedores.php", nuevoProveedor)
+            .then(response => {
+                console.log(response.data); // Manejar la respuesta si es necesario
+                cargarDatos(); // Volver a cargar los datos después de agregar el producto
+                
+            })
+            .catch(error => {
+                console.error('Error en la solicitud Axios:', error);
+                alert("Error al agregar producto. Por favor, intenta nuevamente.");
+            });
             
-        })
-        .catch(error => {
-            console.error('Error en la solicitud Axios:', error);
-            alert("Error al agregar producto. Por favor, intenta nuevamente.");
-        });
+            alertaBuena();
+    
+            btnEconderEditar.click();
+        }
     }
     const inputNombre = document.getElementById("inputNombrePro");
     const inputProducto = document.getElementById("inputProducto");

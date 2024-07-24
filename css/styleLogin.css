@@ -158,7 +158,7 @@ ul li i:hover{
 .dao {
     position: absolute;
     left: 0.9rem;
-    top: .6rem;
+    top: .7rem;
     color: var(--color-principal);
     transition: all 0.6s ease-in-out;
 }
@@ -258,5 +258,32 @@ form div {
 
 .centrador a{
     text-decoration: none;
+}
+.boton_login{
+    height: 20px;
+    width: 100%;
+    border: 1px solid black;
+}
+.input_bordes{
+    border: 2px solid rgb(255, 255, 255);
+    
+}
+
+.input_error{
+    border: 2px solid red;
+    animation: mover_error 0.5s ease-in-out;
+}
+.input_error:focus{
+    box-shadow: 0 0 5px 2px rgba(255, 0, 0, 0.6);
+}
+
+@keyframes mover_error {
+    0%, 20%, 40%, 60%, 80%, 100% {
+        transform: translateX(0);
+        
+    }
+    10%, 30%, 50%, 70%, 90% {
+        transform: translateX(-10px);
+    }
 }
 

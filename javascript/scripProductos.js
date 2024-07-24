@@ -164,7 +164,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 .catch(error => {
                     console.error('Error en la solicitud Axios:', error);
                     alert("Error al eliminar producto. Por favor, intenta nuevamente.");
-            });
+                });
 
             } else if (result.isDenied) {
                 alertaMala();
@@ -219,7 +219,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const edPreCompras = document.getElementById("editCompra").value;
         const edPreVenta = document.getElementById("editVenta").value;
         
-        if (edinputCategoria && edinputProducto && edinputProveedor && edminAviso && edPreCompras && edPreVenta) {
+        if (edinputCategoria.trim() !== "" && edinputProducto.trim() !== "" && edinputProveedor.trim() !== "" && edminAviso.trim() !== "" && edPreCompras.trim() !== "" && edPreVenta.trim() !== "") {
             const actualizarProducto = {
                 id: indice,
                 categoria: edinputCategoria,
@@ -271,6 +271,8 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     function filtradoNombre(valor, tipo) {
+        
+
         axios.get("../php/productos.php")
         .then(response => {
             const listaProductos = response.data;

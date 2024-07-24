@@ -129,49 +129,89 @@ document.addEventListener("DOMContentLoaded", () => {
                     console.error('Error en la solicitud Axios:', error);
                     alert("Error al agregar producto. Por favor, intenta nuevamente.");
                 });
+            alertaBuena();
+            EsconderbtnNewEmpleado.click();
+
         } else {
             
         }
     }
     window.eliminarDato = function(index) {
-        axios.delete(`../php/empleados.php?id=${index}`)
-        .then(response => {
-            console.log(response.data); // Manejar la respuesta si es necesario
-            cargarDatos(); // Volver a cargar los datos después de eliminar el producto
-        })
-        .catch(error => {
-            console.error('Error en la solicitud Axios:', error);
-            alert("Error al eliminar producto. Por favor, intenta nuevamente.");
-        });
+
+        Swal.fire({
+            title: "Seguro que quieres eliminar el dato?",
+            showDenyButton: true,
+            heightAuto: false, 
+            confirmButtonText: "Si",
+            denyButtonText: "No",
+            customClass: {
+                confirmButton: 'color_agregado',
+                denyButton: 'color_agregado',
+            }
+        }).then((result) => {
+            
+
+            if (result.isConfirmed) {
+
+                alertaBuena();
+                
+                axios.delete(`../php/empleados.php?id=${index}`)
+                .then(response => {
+                    console.log(response.data); // Manejar la respuesta si es necesario
+                    cargarDatos(); // Volver a cargar los datos después de eliminar el producto
+                })
+                .catch(error => {
+                    console.error('Error en la solicitud Axios:', error);
+                    alert("Error al eliminar producto. Por favor, intenta nuevamente.");
+                });
+            } else if (result.isDenied) {
+                alertaMala();
+            }
+        });    
+
+
+
+
+
+
+
+
+
+        
     }
     const btnEmpleadoActualizar = document.getElementById("empleadosActualizar");
 
     btnEmpleadoActualizar.addEventListener("click", actulizar)
     function actulizar(){
 
+        
         const NombreAgregar = document.getElementById("editNombreEmpleado").value;
         const CorreoAgregar = document.getElementById("editNombreCorreo").value;
         const TelefonoAgregar = document.getElementById("editNombreTelefono").value;
         const CargoAgregar = document.getElementById("editNombreCargo").value;
         
-        const nuevoProveedor={
-            id:indice,
-            nombre: NombreAgregar,
-            correo_electronico: CorreoAgregar,
-            telefono: TelefonoAgregar,
-            cargo: CargoAgregar
-        };
-
-        axios.put("../php/empleados.php", nuevoProveedor)
-        .then(response => {
-            console.log(response.data); // Manejar la respuesta si es necesario
-            cargarDatos(); // Volver a cargar los datos después de agregar el producto
-            
-        })
-        .catch(error => {
-            console.error('Error en la solicitud Axios:', error);
-            alert("Error al agregar producto. Por favor, intenta nuevamente.");
-        });
+        if (NombreAgregar.trim() !== "" && CorreoAgregar.trim() !== "" && TelefonoAgregar.trim() !== "" && CargoAgregar.trim() !== ""){
+            const nuevoProveedor={
+                id:indice,
+                nombre: NombreAgregar,
+                correo_electronico: CorreoAgregar,
+                telefono: TelefonoAgregar,
+                cargo: CargoAgregar
+            };
+    
+            axios.put("../php/empleados.php", nuevoProveedor)
+            .then(response => {
+                console.log(response.data); // Manejar la respuesta si es necesario
+                cargarDatos(); // Volver a cargar los datos después de agregar el producto
+                
+            })
+            .catch(error => {
+                console.error('Error en la solicitud Axios:', error);
+                alert("Error al agregar producto. Por favor, intenta nuevamente.");
+            });
+            alertaBuena();
+            btnEsconderEmpleado.click();
+        }
     }
     const inputNombre = document.getElementById("inputNombre");
     const inputApellido = document.getElementById("inputTelefono");
