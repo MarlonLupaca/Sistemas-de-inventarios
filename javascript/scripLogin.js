@@ -50,7 +50,9 @@ const inputs_login = document.querySelectorAll(".input_bordes");
 btn_logearse.addEventListener("click", () => {
     const usuario = document.getElementById("usuario").value.trim();
     const contrasena = document.getElementById("contrasena").value.trim();
-
+    window.location.href = "formularios/dashboard.html";
+    //Codigo que jala el back
+    /*
     if (usuario !== "" && contrasena !== "") {
         axios.get('php/usuarios.php', {
             params: {
@@ -89,5 +91,5 @@ btn_logearse.addEventListener("click", () => {
             void input.offsetWidth; // Forzar reflow
             input.classList.add('input_error'); // Vuelve a agregar la clase
         });
-    }
+    }*/
 });

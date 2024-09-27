@@ -547,3 +547,10 @@ h3{
     box-shadow: none;
     border: 2px solid var(--color-principal);
 }
+.Contenedor_Nombres{
+    display: flex;
+    flex-direction: column;
+    margin: 0px !important;
+    justify-content: center;
+    align-items: start !important;
+}
