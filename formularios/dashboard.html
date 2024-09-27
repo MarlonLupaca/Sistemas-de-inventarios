@@ -6,7 +6,6 @@
     <title>Dashboard Inventario</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
     <!--cabecera-->
@@ -15,6 +14,9 @@
             <i class="fa-solid fa-bars" id="desplegar"></i>
             <span id="sis">Sistema de ventas</span>
         </div>
+        <a href="../index.html" class="btn_exit">
+            <i class="fa-solid fa-right-from-bracket"></i>
+        </a>
     </header>
 
     <!--menu lateral-->
@@ -85,15 +87,179 @@
         <!--contenido principal-->
         <div class="contenido--principal">
             <div class="contenedor--objetos">
-                <h3 class="fuente_comun">Dashboard</h3>
-                <ul id="lista">
+                <h3>Dashboard</h3>
+                
+                    <ul>
+                        <li>
+                            <div class="Caja_icon">
+                                <i class="fa-solid fa-server"></i>
+                            </div>
+                            <div class="Caja">
+                                <span class="primer--texto">Productos</span>
+                                <span class="segundo--texto">16</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="Caja_icon">
+                                <i class="fa-solid fa-box"></i>
+                            </div>
+                            <div class="Caja">
+                                <span class="primer--texto">Existencias</span>
+                                <span class="segundo--texto">16</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="Caja_icon">
+                                <i class="fa-solid fa-truck"></i>
+                            </div>
+                            <div class="Caja">
+                                <span class="primer--texto">Proveedores</span>
+                                <span class="segundo--texto">16</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="Caja_icon">
+                                <i class="fa-solid fa-exchange-alt"></i>
+                            </div>
+                            <div class="Caja">
+                                <span class="primer--texto">Movimientos</span>
+                                <span class="segundo--texto">16</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="Caja_icon">
+                                <i class="fa-solid fa-user-tie"></i>
+                            </div>
+                            <div class="Caja">
+                                <span class="primer--texto">Empleados</span>
+                                <span class="segundo--texto">16</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="Caja_icon">
+                                <i class="fa-solid fa-users"></i>
+                            </div>
+                            <div class="Caja">
+                                <span class="primer--texto">Usuarios</span>
+                                <span class="segundo--texto">16</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="Caja_icon">
+                                <i class="fa-solid fa-tags"></i>
+                            </div>
+                            <div class="Caja">
+                                <span class="primer--texto">Categorías</span>
+                                <span class="segundo--texto">16</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="Caja_icon">
+                                <i class="fa-solid fa-chart-line"></i>
+                            </div>
+                            <div class="Caja">
+                                <span class="primer--texto">Ventas</span>
+                                <span class="segundo--texto">16</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="Caja_icon">
+                                <i class="fa-solid fa-chart-pie"></i>
+                            </div>
+                            <div class="Caja">
+                                <span class="primer--texto">Estadísticas</span>
+                                <span class="segundo--texto">16</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="Caja_icon">
+                                <i class="fa-solid fa-file-invoice"></i>
+                            </div>
+                            <div class="Caja">
+                                <span class="primer--texto">Facturas</span>
+                                <span class="segundo--texto">16</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="Caja_icon">
+                                <i class="fa-solid fa-cog"></i>
+                            </div>
+                            <div class="Caja">
+                                <span class="primer--texto">Configuración</span>
+                                <span class="segundo--texto">16</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="Caja_icon">
+                                <i class="fa-solid fa-shield-alt"></i>
+                            </div>
+                            <div class="Caja">
+                                <span class="primer--texto">Seguridad</span>
+                                <span class="segundo--texto">16</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="Caja_icon">
+                                <i class="fa-solid fa-bell"></i>
+                            </div>
+                            <div class="Caja">
+                                <span class="primer--texto">Notificaciones</span>
+                                <span class="segundo--texto">16</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="Caja_icon">
+                                <i class="fa-solid fa-comments"></i>
+                            </div>
+                            <div class="Caja">
+                                <span class="primer--texto">Soporte</span>
+                                <span class="segundo--texto">16</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="Caja_icon">
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                            <div class="Caja">
+                                <span class="primer--texto">Favoritos</span>
+                                <span class="segundo--texto">16</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="Caja_icon">
+                                <i class="fa-solid fa-calendar-alt"></i>
+                            </div>
+                            <div class="Caja">
+                                <span class="primer--texto">Eventos</span>
+                                <span class="segundo--texto">16</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="Caja_icon">
+                                <i class="fa-solid fa-clipboard-list"></i>
+                            </div>
+                            <div class="Caja">
+                                <span class="primer--texto">Tareas</span>
+                                <span class="segundo--texto">16</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="Caja_icon">
+                                <i class="fa-solid fa-globe"></i>
+                            </div>
+                            <div class="Caja">
+                                <span class="primer--texto">Localización</span>
+                                <span class="segundo--texto">16</span>
+                            </div>
+                        </li>
+                    </ul>
                     
-                </ul>
+                
+                
                 
             </div>
         </div>
     
     <script src="../javascript/script.js"></script>
-    <script src="../javascript/dasboard.js"></script>
 </body>
 </html>

@@ -68,6 +68,4 @@ document.addEventListener('DOMContentLoaded', function() {
     searchInputComprobante.addEventListener('input', filterCards);
     searchInputProducto.addEventListener('input', filterCards);
 
-    // Initial load of cards
-    loadCards();
 });
