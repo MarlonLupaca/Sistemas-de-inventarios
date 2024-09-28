@@ -572,3 +572,40 @@ h3{
     padding-right: 20px;
     color: #1f2d3d;
 }
+.Ventana_bloqueo{
+    width: 100px;
+    position: fixed;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(29, 155, 181);
+    
+}
+#Ventana_bloqueo div {
+    width: 350px;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#Ventana_bloqueo img {
+    width: 300px;
+    margin-right: 35px;
+    
+}
+#Ventana_bloqueo span {
+    display: block;
+    font-weight: 900;
+    font-size: 30px;
+    color: #f0f8ff;
+
+}
+
+@media (max-width: 850px) {
+    #Ventana_bloqueo{
+        display: flex;
+    }
+}
